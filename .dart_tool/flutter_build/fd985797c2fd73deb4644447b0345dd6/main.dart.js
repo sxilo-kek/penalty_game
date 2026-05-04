@@ -18394,7 +18394,7 @@ _.cB$=b
 _.c=_.a=null},
 wG:function wG(){},
 ah1(a){var s,r,q,p,o,n,m,l=null,k=new A.U(new Float32Array(2))
-k.aE(900,60)
+k.aE(1200,60)
 s=$.aa()
 r=A.aZ()
 r.r=B.h5.cK(0.5).gt()

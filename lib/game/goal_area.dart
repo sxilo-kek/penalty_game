@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class GoalArea extends RectangleComponent {
   GoalArea(Vector2 position)
       : super(
-          size: Vector2(900, 60),
+          size: Vector2(1200, 60),
           position: position,
           anchor: Anchor.center,
           paint: Paint()..color = Colors.red.withValues(alpha: 0.5),
