@@ -40,7 +40,7 @@ class PenaltyGame extends FlameGame with HasCollisionDetection, PanDetector {
   Future<void> onLoad() async {
     await super.onLoad();
     await _drawPitch();
-    goal = GoalArea(Vector2(size.x / 2, 380));
+    goal = GoalArea(Vector2(size.x / 2, 420));
     add(goal);
     keeper = Goalkeeper(Vector2(size.x / 2, 520));
     add(keeper);
