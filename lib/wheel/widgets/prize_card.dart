@@ -35,9 +35,9 @@ class PrizeCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(WheelLayout.cardBorderRadius),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.18),
-                blurRadius: 40,
-                offset: const Offset(0, 20),
+                color: Colors.black.withValues(alpha: 0.16),
+                blurRadius: 36,
+                offset: const Offset(0, 18),
               ),
             ],
           ),
@@ -51,7 +51,7 @@ class PrizeCard extends StatelessWidget {
                   fit: BoxFit.contain,
                 ),
               ),
-              const SizedBox(height: 28),
+              const SizedBox(height: 24),
               Text(
                 prize.title,
                 textAlign: TextAlign.center,

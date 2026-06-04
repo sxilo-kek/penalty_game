@@ -99,13 +99,10 @@ class _FortuneWheelCarouselState extends State<FortuneWheelCarousel> {
     return [
       for (final prize in widget.engine.prizes)
         FortuneItem(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-            child: SizedBox(
-              width: WheelLayout.cardWidth,
-              height: WheelLayout.cardHeight,
-              child: PrizeCard(prize: prize),
-            ),
+          child: SizedBox(
+            width: WheelLayout.cardWidth,
+            height: WheelLayout.cardHeight,
+            child: PrizeCard(prize: prize),
           ),
         ),
     ];
