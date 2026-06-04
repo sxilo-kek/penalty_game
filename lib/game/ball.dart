@@ -19,7 +19,7 @@ class Ball extends SpriteComponent
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    sprite = await Sprite.load('ball.png');
+    sprite = await Sprite.load('ball.png', images: game.images);
    add(CircleHitbox(radius: 60));
   }
 

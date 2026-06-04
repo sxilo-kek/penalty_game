@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:penalty_game/screens/game_screen.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
+
+import 'package:penalty_game/router.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  usePathUrlStrategy();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-  runApp(const PenaltyApp());
+  runApp(const GamesApp());
 }
 
-class PenaltyApp extends StatelessWidget {
-  const PenaltyApp({super.key});
+class GamesApp extends StatelessWidget {
+  const GamesApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Penalty Game',
+    return MaterialApp.router(
+      title: 'MCSCC Games',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: const GameScreen(),
+      routerConfig: appRouter,
     );
   }
 }
-
-// 2160x3840

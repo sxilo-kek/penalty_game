@@ -15,7 +15,7 @@ class Blocker extends SpriteComponent with HasGameReference<PenaltyGame>, Collis
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    sprite = await Sprite.load('blocker.png');
+    sprite = await Sprite.load('blocker.png', images: game.images);
     add(RectangleHitbox(size: Vector2(180, 150), position: Vector2(0, 50)));
   }
 

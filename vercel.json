@@ -1,5 +1,8 @@
 {
   "buildCommand": "bash build.sh",
   "outputDirectory": "build/web",
-  "installCommand": ""
+  "installCommand": "",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }

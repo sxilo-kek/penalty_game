@@ -11,6 +11,7 @@ import 'package:penalty_game/game/secure_score.dart';
 import 'package:penalty_game/game/flash.dart';
 import 'package:penalty_game/game/blocker.dart';
 import 'package:penalty_game/game/ball.dart';
+import 'package:penalty_game/asset_paths.dart';
 
 class PenaltyGame extends FlameGame with HasCollisionDetection, PanDetector {
   Ball? ball;
@@ -38,6 +39,7 @@ class PenaltyGame extends FlameGame with HasCollisionDetection, PanDetector {
 
   @override
   Future<void> onLoad() async {
+    images.prefix = AssetPaths.penaltyImages;
     await super.onLoad();
     await _drawPitch();
     goal = GoalArea(Vector2(size.x / 2, 420));
@@ -59,7 +61,7 @@ class PenaltyGame extends FlameGame with HasCollisionDetection, PanDetector {
   }
 
   Future<void> _drawPitch() async {
-    final fieldSprite = await Sprite.load('field.png');
+    final fieldSprite = await loadSprite('field.png');
     add(SpriteComponent(sprite: fieldSprite, size: size, position: Vector2.zero()));
   }
 

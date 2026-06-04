@@ -18,8 +18,7 @@ class _HudOverlayState extends State<HudOverlay> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    scoreAnim = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 400));
+    scoreAnim = AnimationController(vsync: this, duration: const Duration(milliseconds: 400));
     widget.game.onScoreChanged = () {
       if (!mounted) return;
       setState(() {});
@@ -50,56 +49,28 @@ class _HudOverlayState extends State<HudOverlay> with TickerProviderStateMixin {
             children: [
               // Goals
               Container(
-                decoration: BoxDecoration(
-                  color: Colors.black.withValues(alpha: 0.35),
-                  borderRadius: BorderRadius.circular(12),
-                ),
+                decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0.35), borderRadius: BorderRadius.circular(12)),
                 padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     ScaleTransition(
-                      scale: Tween(begin: 1.0, end: 1.35)
-                          .chain(CurveTween(curve: Curves.elasticOut))
-                          .animate(scoreAnim),
-                      child: Text(
-                        game.score.toString(),
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 28,
-                        ),
-                      ),
+                      scale: Tween(begin: 1.0, end: 1.35).chain(CurveTween(curve: Curves.elasticOut)).animate(scoreAnim),
+                      child: Text(game.score.toString(), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 28)),
                     ),
-                    const Text(
-                      'Goals',
-                      style: TextStyle(color: Colors.white70, fontSize: 12),
-                    ),
+                    const Text('Goals', style: TextStyle(color: Colors.white70, fontSize: 12)),
                   ],
                 ),
               ),
               // Level badge
               Container(
-                decoration: BoxDecoration(
-                  color: Colors.black.withValues(alpha: 0.35),
-                  borderRadius: BorderRadius.circular(12),
-                ),
+                decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0.35), borderRadius: BorderRadius.circular(12)),
                 padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      'Lv ${game.difficultyLevel + 1}',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 28,
-                      ),
-                    ),
-                    const Text(
-                      'Level',
-                      style: TextStyle(color: Colors.white70, fontSize: 12),
-                    ),
+                    Text('Lv ${game.difficultyLevel + 1}', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 28)),
+                    const Text('Level', style: TextStyle(color: Colors.white70, fontSize: 12)),
                   ],
                 ),
               ),

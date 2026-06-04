@@ -1,0 +1,5 @@
+/// Asset bundle paths for each game (under [assets/images/]).
+abstract final class AssetPaths {
+  static const penaltyImages = 'assets/images/penalty_game/';
+  static const wheelImages = 'assets/images/wheel_game/';
+}

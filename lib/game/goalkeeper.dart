@@ -15,7 +15,7 @@ class Goalkeeper extends SpriteComponent
  @override
 Future<void> onLoad() async {
   await super.onLoad();
-  sprite = await Sprite.load('goalkeeper.png');
+  sprite = await Sprite.load('goalkeeper.png', images: game.images);
   add(RectangleHitbox(size: Vector2(310, 180), position: Vector2(5, 70)));
 }
 
