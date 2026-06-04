@@ -68,7 +68,7 @@ class _FortuneWheelCarouselState extends State<FortuneWheelCarousel> {
         backgroundColor: const Color(0xffF40000),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(60)),
         title: Text(
-          prize.id == 'thanks' ? 'Баярлалаа' : 'Баяр хүрслээ!',
+          prize.id == 'thanks' ? 'Баярлалаа' : 'Баяр хүргэе!',
           style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w900,
@@ -126,43 +126,48 @@ class _FortuneWheelCarouselState extends State<FortuneWheelCarousel> {
             top: WheelLayout.barTop,
             left: 0,
             right: 0,
-            height: WheelLayout.barHeight + 200,
-            child: FortuneBar(
-              selected: _selected.stream,
-              items: _buildItems(),
-              height: WheelLayout.barHeight,
-              fullWidth: true,
-              visibleItemCount: 3,
-              rotationCount: widget.minRotations,
-              duration: Duration(milliseconds: widget.spinDurationMs),
-              animateFirst: false,
-              physics: NoPanPhysics(),
-              curve: FortuneCurve.spin,
-              styleStrategy: const UniformStyleStrategy(
-                color: Colors.white,
-                borderColor: Colors.transparent,
-                borderWidth: 0,
-              ),
-              indicators: [
-                FortuneIndicator(
-                  alignment: Alignment.topCenter,
-                  child: Image.asset(
-                    '${AssetPaths.wheelImages}top_indicator.png',
-                    width: WheelLayout.indicatorWidth,
-                    fit: BoxFit.contain,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset(
+                  '${AssetPaths.wheelImages}top_indicator.png',
+                  width: WheelLayout.indicatorWidth,
+                  height: WheelLayout.indicatorHeight,
+                  fit: BoxFit.contain,
+                ),
+                const SizedBox(height: WheelLayout.indicatorGap),
+                SizedBox(
+                  height: WheelLayout.barHeight,
+                  width: KioskScreenSize.width,
+                  child: FortuneBar(
+                    selected: _selected.stream,
+                    items: _buildItems(),
+                    height: WheelLayout.barHeight,
+                    fullWidth: true,
+                    visibleItemCount: 3,
+                    rotationCount: widget.minRotations,
+                    duration: Duration(milliseconds: widget.spinDurationMs),
+                    animateFirst: false,
+                    physics: NoPanPhysics(),
+                    curve: FortuneCurve.spin,
+                    indicators: const [],
+                    styleStrategy: const UniformStyleStrategy(
+                      color: Colors.white,
+                      borderColor: Colors.transparent,
+                      borderWidth: 0,
+                    ),
+                    onAnimationStart: () => setState(() => _spinning = true),
+                    onAnimationEnd: _onAnimationEnd,
                   ),
                 ),
-                FortuneIndicator(
-                  alignment: Alignment.bottomCenter,
-                  child: Image.asset(
-                    '${AssetPaths.wheelImages}bottom_indicator.png',
-                    width: WheelLayout.indicatorWidth,
-                    fit: BoxFit.contain,
-                  ),
+                const SizedBox(height: WheelLayout.indicatorGap),
+                Image.asset(
+                  '${AssetPaths.wheelImages}bottom_indicator.png',
+                  width: WheelLayout.indicatorWidth,
+                  height: WheelLayout.indicatorHeight,
+                  fit: BoxFit.contain,
                 ),
               ],
-              onAnimationStart: () => setState(() => _spinning = true),
-              onAnimationEnd: _onAnimationEnd,
             ),
           ),
           Positioned(

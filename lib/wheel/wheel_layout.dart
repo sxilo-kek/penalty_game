@@ -5,6 +5,8 @@ abstract final class WheelLayout {
   static const double barHeight = 920;
   static const double barTop = 1180;
   static const double indicatorWidth = 180;
+  static const double indicatorHeight = 100;
+  static const double indicatorGap = 16;
   static const double spinButtonWidth = 880;
   static const double spinButtonBottom = 320;
 
