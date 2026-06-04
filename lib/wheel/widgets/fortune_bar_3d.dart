@@ -186,7 +186,8 @@ class _InfiniteBar3D extends StatelessWidget {
 
     void addLayer(int childIndex, double pos) {
       final slotOffset = pos - center;
-      if (slotOffset.abs() > visibleItemCount + 1) return;
+      // Only left, center, right (3 on screen).
+      if (slotOffset.abs() > 1.55) return;
       layers.add(
         _BarLayer(
           slotOffset: slotOffset,
