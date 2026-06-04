@@ -1,6 +1,6 @@
 {
   "spinDurationMs": 4200,
-  "minRotations": 4,
+  "minRotations": 2,
   "prizes": [
     {
       "id": "drink",

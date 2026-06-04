@@ -1,14 +1,11 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 
 import 'package:penalty_game/asset_paths.dart';
 import 'package:penalty_game/kiosk_screen_size.dart';
 import 'package:penalty_game/wheel/models/wheel_prize.dart';
 import 'package:penalty_game/wheel/wheel_layout.dart';
 import 'package:penalty_game/wheel/wheel_spin_engine.dart';
-import 'package:penalty_game/wheel/widgets/prize_card.dart';
+import 'package:penalty_game/wheel/widgets/wheel_carousel_3d.dart';
 
 class FortuneWheelCarousel extends StatefulWidget {
   const FortuneWheelCarousel({
@@ -27,25 +24,17 @@ class FortuneWheelCarousel extends StatefulWidget {
 }
 
 class _FortuneWheelCarouselState extends State<FortuneWheelCarousel> {
-  final StreamController<int> _selected = StreamController<int>.broadcast();
+  final GlobalKey<WheelCarousel3DState> _carouselKey = GlobalKey();
 
   bool _spinning = false;
   WheelPrize? _pendingWinner;
 
-  List<WheelPrize> get _prizes => widget.engine.prizes;
-
-  @override
-  void dispose() {
-    _selected.close();
-    super.dispose();
-  }
-
   void _spin() {
-    if (_spinning || _prizes.isEmpty) return;
+    if (_spinning || widget.engine.prizes.isEmpty) return;
 
     final result = widget.engine.pickWinnerWithIndex();
     _pendingWinner = result.prize;
-    _selected.add(result.index);
+    _carouselKey.currentState?.spinToIndex(result.index);
   }
 
   void _onAnimationEnd() {
@@ -96,18 +85,6 @@ class _FortuneWheelCarouselState extends State<FortuneWheelCarousel> {
     );
   }
 
-  List<FortuneItem> _buildItems() {
-    return [
-      for (final prize in _prizes)
-        FortuneItem(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-            child: PrizeCard(prize: prize),
-          ),
-        ),
-    ];
-  }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -136,29 +113,13 @@ class _FortuneWheelCarouselState extends State<FortuneWheelCarousel> {
                   fit: BoxFit.contain,
                 ),
                 const SizedBox(height: WheelLayout.indicatorGap),
-                SizedBox(
-                  height: WheelLayout.barHeight,
-                  width: KioskScreenSize.width,
-                  child: FortuneBar(
-                    selected: _selected.stream,
-                    items: _buildItems(),
-                    height: WheelLayout.barHeight,
-                    fullWidth: true,
-                    visibleItemCount: 3,
-                    rotationCount: widget.minRotations,
-                    duration: Duration(milliseconds: widget.spinDurationMs),
-                    animateFirst: false,
-                    physics: NoPanPhysics(),
-                    curve: FortuneCurve.spin,
-                    indicators: const [],
-                    styleStrategy: const UniformStyleStrategy(
-                      color: Colors.white,
-                      borderColor: Colors.transparent,
-                      borderWidth: 0,
-                    ),
-                    onAnimationStart: () => setState(() => _spinning = true),
-                    onAnimationEnd: _onAnimationEnd,
-                  ),
+                WheelCarousel3D(
+                  key: _carouselKey,
+                  prizes: widget.engine.prizes,
+                  minRotations: widget.minRotations,
+                  spinDurationMs: widget.spinDurationMs,
+                  onAnimationStart: () => setState(() => _spinning = true),
+                  onAnimationEnd: _onAnimationEnd,
                 ),
                 const SizedBox(height: WheelLayout.indicatorGap),
                 Image.asset(
