@@ -19,6 +19,7 @@ abstract final class WheelLayout {
   static const double carouselMinOpacity = 0.28;
   static const double carouselDepthZ = 140;
   static const double carouselVerticalDrop = 36;
+  static const double carouselSlopeTilt = 0.18;
 
   static const double cardBorderRadius = 56;
   static const double cardPadding = 40;

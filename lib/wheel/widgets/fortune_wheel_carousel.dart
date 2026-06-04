@@ -1,11 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 
 import 'package:penalty_game/asset_paths.dart';
 import 'package:penalty_game/kiosk_screen_size.dart';
 import 'package:penalty_game/wheel/models/wheel_prize.dart';
 import 'package:penalty_game/wheel/wheel_layout.dart';
 import 'package:penalty_game/wheel/wheel_spin_engine.dart';
-import 'package:penalty_game/wheel/widgets/wheel_carousel_3d.dart';
+import 'package:penalty_game/wheel/widgets/fortune_bar_3d.dart';
+import 'package:penalty_game/wheel/widgets/prize_card.dart';
 
 class FortuneWheelCarousel extends StatefulWidget {
   const FortuneWheelCarousel({
@@ -24,17 +28,23 @@ class FortuneWheelCarousel extends StatefulWidget {
 }
 
 class _FortuneWheelCarouselState extends State<FortuneWheelCarousel> {
-  final GlobalKey<WheelCarousel3DState> _carouselKey = GlobalKey();
+  final StreamController<int> _selected = StreamController<int>.broadcast();
 
   bool _spinning = false;
   WheelPrize? _pendingWinner;
+
+  @override
+  void dispose() {
+    _selected.close();
+    super.dispose();
+  }
 
   void _spin() {
     if (_spinning || widget.engine.prizes.isEmpty) return;
 
     final result = widget.engine.pickWinnerWithIndex();
     _pendingWinner = result.prize;
-    _carouselKey.currentState?.spinToIndex(result.index);
+    _selected.add(result.index);
   }
 
   void _onAnimationEnd() {
@@ -85,6 +95,22 @@ class _FortuneWheelCarouselState extends State<FortuneWheelCarousel> {
     );
   }
 
+  List<FortuneItem> _buildItems() {
+    return [
+      for (final prize in widget.engine.prizes)
+        FortuneItem(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+            child: SizedBox(
+              width: WheelLayout.cardWidth,
+              height: WheelLayout.cardHeight,
+              child: PrizeCard(prize: prize),
+            ),
+          ),
+        ),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -106,18 +132,18 @@ class _FortuneWheelCarouselState extends State<FortuneWheelCarousel> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Image.asset(
-                  '${AssetPaths.wheelImages}top_indicator.png',
-                  width: WheelLayout.indicatorWidth,
-                  height: WheelLayout.indicatorHeight,
-                  fit: BoxFit.contain,
-                ),
+                Image.asset('${AssetPaths.wheelImages}top_indicator.png', width: WheelLayout.indicatorWidth, height: WheelLayout.indicatorHeight, fit: BoxFit.contain),
                 const SizedBox(height: WheelLayout.indicatorGap),
-                WheelCarousel3D(
-                  key: _carouselKey,
-                  prizes: widget.engine.prizes,
-                  minRotations: widget.minRotations,
-                  spinDurationMs: widget.spinDurationMs,
+                FortuneBar3D(
+                  selected: _selected.stream,
+                  items: _buildItems(),
+                  height: WheelLayout.barHeight,
+                  fullWidth: true,
+                  visibleItemCount: 3,
+                  rotationCount: widget.minRotations,
+                  duration: Duration(milliseconds: widget.spinDurationMs),
+                  animateFirst: false,
+                  curve: FortuneCurve.spin,
                   onAnimationStart: () => setState(() => _spinning = true),
                   onAnimationEnd: _onAnimationEnd,
                 ),
