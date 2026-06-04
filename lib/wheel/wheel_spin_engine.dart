@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:penalty_game/wheel/models/wheel_prize.dart';
 
 /// Picks a prize using JSON [probability] weights and [maxTotal] excess limits.
@@ -21,7 +22,12 @@ class WheelSpinEngine {
   ({WheelPrize prize, int index}) pickWinnerWithIndex() {
     final prize = pickWinner();
     final index = prizes.indexWhere((p) => p.id == prize.id);
-    return (prize: prize, index: index < 0 ? 0 : index);
+    final safeIndex = index < 0 ? 0 : index;
+
+    _logWinningReward(prize, safeIndex);
+    _logExcess(label: 'before recordWin');
+
+    return (prize: prize, index: safeIndex);
   }
 
   WheelPrize pickWinner() {
@@ -43,8 +49,29 @@ class WheelSpinEngine {
 
   void recordWin(WheelPrize prize) {
     _totalWins[prize.id] = (_totalWins[prize.id] ?? 0) + 1;
+    _logExcess(label: 'after recordWin');
   }
 
   int remainingTotal(WheelPrize prize) =>
       prize.maxTotal - (_totalWins[prize.id] ?? 0);
+
+  void _logWinningReward(WheelPrize prize, int index) {
+    debugPrint(
+      '[Wheel] Winning reward: id=${prize.id}, title=${prize.title}, '
+      'index=$index, probability=${prize.probability}',
+    );
+  }
+
+  void _logExcess({required String label}) {
+    final buffer = StringBuffer('[Wheel] Excess ($label):\n');
+    for (final prize in prizes) {
+      final won = _totalWins[prize.id] ?? 0;
+      final remaining = prize.maxTotal - won;
+      buffer.writeln(
+        '  ${prize.id}: won=$won, remaining=$remaining, maxTotal=${prize.maxTotal}, '
+        'eligible=${remaining > 0}',
+      );
+    }
+    debugPrint(buffer.toString());
+  }
 }

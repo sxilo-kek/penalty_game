@@ -1,12 +1,10 @@
-import 'dart:async';
-
-import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
+import 'package:flutter/material.dart';
+import 'dart:async';
 
 import 'package:penalty_game/kiosk_screen_size.dart';
 import 'package:penalty_game/wheel/wheel_layout.dart';
 
-/// [FortuneBar] with 3D perspective — side items slope away left/right.
 class FortuneBar3D extends StatefulWidget {
   const FortuneBar3D({
     super.key,
@@ -39,8 +37,7 @@ class FortuneBar3D extends StatefulWidget {
   State<FortuneBar3D> createState() => _FortuneBar3DState();
 }
 
-class _FortuneBar3DState extends State<FortuneBar3D>
-    with SingleTickerProviderStateMixin {
+class _FortuneBar3DState extends State<FortuneBar3D> with SingleTickerProviderStateMixin {
   late AnimationController _animationCtrl;
   late Animation<double> _animation;
   late StreamSubscription<int> _subscription;
@@ -87,21 +84,17 @@ class _FortuneBar3DState extends State<FortuneBar3D>
 
   @override
   Widget build(BuildContext context) {
-    final visibleCount =
-        widget.visibleItemCount.clamp(1, widget.items.length);
+    final visibleCount = widget.visibleItemCount.clamp(1, widget.items.length);
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final width = widget.fullWidth
-            ? KioskScreenSize.width
-            : constraints.maxWidth;
+        final width = widget.fullWidth ? KioskScreenSize.width : constraints.maxWidth;
         final size = Size(width, widget.height);
 
         return AnimatedBuilder(
           animation: _animation,
           builder: (context, _) {
-            final itemPosition =
-                widget.items.length * widget.rotationCount + _selectedIndex;
+            final itemPosition = widget.items.length * widget.rotationCount + _selectedIndex;
             final position = _animation.value * itemPosition;
 
             return _InfiniteBar3D(
@@ -143,12 +136,9 @@ class _InfiniteBar3D extends StatelessWidget {
     }
 
     final abs = slotOffset.abs();
-    // Convex cylinder: left card faces left, right card faces right.
     final rotateY = slotOffset * WheelLayout.carouselRotateY;
-    final scale = (1 - abs * WheelLayout.carouselScaleFalloff)
-        .clamp(WheelLayout.carouselMinScale, 1.0);
-    final opacity = (1 - abs * WheelLayout.carouselOpacityFalloff)
-        .clamp(WheelLayout.carouselMinOpacity, 1.0);
+    final scale = (1 - abs * WheelLayout.carouselScaleFalloff).clamp(WheelLayout.carouselMinScale, 1.0);
+    final opacity = (1 - abs * WheelLayout.carouselOpacityFalloff).clamp(WheelLayout.carouselMinOpacity, 1.0);
     final depthZ = -abs * WheelLayout.carouselDepthZ;
 
     return Opacity(
@@ -170,8 +160,7 @@ class _InfiniteBar3D extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isLengthTwo = children.length == 2;
-    final normalizedPosition = (-position + centerPosition) % children.length -
-        (isLengthTwo ? 0.5 : 0.0);
+    final normalizedPosition = (-position + centerPosition) % children.length - (isLengthTwo ? 0.5 : 0.0);
     final isLockedIn = position % 1 == 0;
     final overflowItemCount = normalizedPosition.ceil() + (isLockedIn ? 1 : 0);
     final nonIntOffset = normalizedPosition - normalizedPosition.floor();
@@ -183,13 +172,7 @@ class _InfiniteBar3D extends StatelessWidget {
     void addLayer(int childIndex, double pos) {
       final slotOffset = pos - center;
       if (slotOffset.abs() > visibleItemCount + 1) return;
-      layers.add(
-        _BarLayer(
-          x: pos * itemWidth,
-          slotOffset: slotOffset,
-          child: children[childIndex % children.length],
-        ),
-      );
+      layers.add(_BarLayer(x: pos * itemWidth, slotOffset: slotOffset, child: children[childIndex % children.length]));
     }
 
     if (isLengthTwo) {
@@ -197,10 +180,7 @@ class _InfiniteBar3D extends StatelessWidget {
     }
 
     for (var i = 0; i < overflowItemCount; i++) {
-      final childIndex = (i -
-              overflowItemCount -
-              (isLengthTwo && isLockedIn ? 1 : 0)) %
-          children.length;
+      final childIndex = (i - overflowItemCount - (isLengthTwo && isLockedIn ? 1 : 0)) % children.length;
       addLayer(childIndex, i + nonIntOffset - 1);
     }
 
@@ -218,31 +198,8 @@ class _InfiniteBar3D extends StatelessWidget {
           clipBehavior: Clip.none,
           alignment: Alignment.centerLeft,
           children: [
-            Positioned.fill(
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: RadialGradient(
-                    center: Alignment.center,
-                    radius: 1.05,
-                    colors: [
-                      Colors.transparent,
-                      Colors.black.withValues(alpha: 0.1),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            for (final layer in layers)
-              Positioned(
-                left: layer.x,
-                top: 0,
-                width: itemWidth,
-                height: size.height,
-                child: _wrap3D(
-                  slotOffset: layer.slotOffset,
-                  child: layer.child,
-                ),
-              ),
+            Positioned.fill(child: DecoratedBox(decoration: BoxDecoration(gradient: RadialGradient(center: Alignment.center, radius: 1.05, colors: [Colors.transparent, Colors.black.withValues(alpha: 0.1)])))),
+            for (final layer in layers) Positioned(left: layer.x, top: 0, width: itemWidth, height: size.height, child: _wrap3D(slotOffset: layer.slotOffset, child: layer.child)),
           ],
         ),
       ),

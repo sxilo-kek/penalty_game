@@ -7,7 +7,6 @@ abstract final class WheelLayout {
   static const double spinButtonWidth = 880;
   static const double spinButtonBottom = 320;
 
-  // 3D carousel
   static const double slotWidth = 720;
   static const double cardWidth = 640;
   static const double cardHeight = 820;
