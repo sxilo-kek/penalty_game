@@ -143,32 +143,25 @@ class _InfiniteBar3D extends StatelessWidget {
     }
 
     final abs = slotOffset.abs();
-    // Left items (negative offset) turn toward the left; right toward the right.
-    final rotateY = -slotOffset * WheelLayout.carouselRotateY;
+    // Convex cylinder: left card faces left, right card faces right.
+    final rotateY = slotOffset * WheelLayout.carouselRotateY;
     final scale = (1 - abs * WheelLayout.carouselScaleFalloff)
         .clamp(WheelLayout.carouselMinScale, 1.0);
     final opacity = (1 - abs * WheelLayout.carouselOpacityFalloff)
         .clamp(WheelLayout.carouselMinOpacity, 1.0);
     final depthZ = -abs * WheelLayout.carouselDepthZ;
-    final dropY = abs * WheelLayout.carouselVerticalDrop;
-    // Side slopes lean outward with their facing direction.
-    final rotateX = -slotOffset * WheelLayout.carouselSlopeTilt;
 
-    return Padding(
-      padding: EdgeInsets.only(top: dropY),
-      child: Opacity(
-        opacity: opacity,
-        child: Transform(
-          alignment: Alignment.center,
-          transform: Matrix4.identity()
-            ..setEntry(3, 2, WheelLayout.carouselPerspective)
-            ..setTranslationRaw(0, 0, depthZ)
-            ..rotateY(rotateY)
-            ..rotateX(rotateX),
-          child: Transform.scale(
-            scale: scale,
-            child: child,
-          ),
+    return Opacity(
+      opacity: opacity,
+      child: Transform(
+        alignment: Alignment.center,
+        transform: Matrix4.identity()
+          ..setEntry(3, 2, WheelLayout.carouselPerspective)
+          ..rotateY(rotateY)
+          ..setTranslationRaw(0, 0, depthZ),
+        child: Transform.scale(
+          scale: scale,
+          child: child,
         ),
       ),
     );
