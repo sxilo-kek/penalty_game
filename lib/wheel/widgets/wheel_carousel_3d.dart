@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vector_math/vector_math_64.dart' show Vector3;
 
 import 'package:penalty_game/kiosk_screen_size.dart';
 import 'package:penalty_game/wheel/models/wheel_prize.dart';
@@ -158,7 +159,7 @@ class WheelCarousel3DState extends State<WheelCarousel3D>
             alignment: Alignment.center,
             transform: Matrix4.identity()
               ..setEntry(3, 2, WheelLayout.carouselPerspective)
-              ..translate(0.0, 0.0, depthZ)
+              ..translateByVector3(Vector3(0, 0, depthZ))
               ..rotateY(rotateY),
             child: Transform.scale(
               scale: scale,
