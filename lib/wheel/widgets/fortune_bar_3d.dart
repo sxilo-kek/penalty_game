@@ -138,16 +138,21 @@ class _InfiniteBar3D extends StatelessWidget {
   double _centerSlot() => visibleItemCount / 2 - 0.5;
 
   Widget _wrap3D({required Widget child, required double slotOffset}) {
+    if (slotOffset.abs() < 0.01) {
+      return child;
+    }
+
     final abs = slotOffset.abs();
-    final rotateY = slotOffset * WheelLayout.carouselRotateY;
+    // Left items (negative offset) turn toward the left; right toward the right.
+    final rotateY = -slotOffset * WheelLayout.carouselRotateY;
     final scale = (1 - abs * WheelLayout.carouselScaleFalloff)
         .clamp(WheelLayout.carouselMinScale, 1.0);
     final opacity = (1 - abs * WheelLayout.carouselOpacityFalloff)
         .clamp(WheelLayout.carouselMinOpacity, 1.0);
     final depthZ = -abs * WheelLayout.carouselDepthZ;
     final dropY = abs * WheelLayout.carouselVerticalDrop;
-    // Side slopes: tilt top edge away from center (ramp look).
-    final rotateX = abs * WheelLayout.carouselSlopeTilt;
+    // Side slopes lean outward with their facing direction.
+    final rotateX = -slotOffset * WheelLayout.carouselSlopeTilt;
 
     return Padding(
       padding: EdgeInsets.only(top: dropY),
@@ -157,9 +162,9 @@ class _InfiniteBar3D extends StatelessWidget {
           alignment: Alignment.center,
           transform: Matrix4.identity()
             ..setEntry(3, 2, WheelLayout.carouselPerspective)
+            ..setTranslationRaw(0, 0, depthZ)
             ..rotateY(rotateY)
-            ..rotateX(rotateX)
-            ..setTranslationRaw(0, 0, depthZ),
+            ..rotateX(rotateX),
           child: Transform.scale(
             scale: scale,
             child: child,

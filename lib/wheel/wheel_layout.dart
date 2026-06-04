@@ -12,14 +12,14 @@ abstract final class WheelLayout {
   static const double cardWidth = 640;
   static const double cardHeight = 820;
   static const double carouselPerspective = 0.0022;
-  static const double carouselRotateY = 0.72;
+  static const double carouselRotateY = 0.85;
   static const double carouselScaleFalloff = 0.34;
   static const double carouselOpacityFalloff = 0.4;
   static const double carouselMinScale = 0.46;
   static const double carouselMinOpacity = 0.28;
   static const double carouselDepthZ = 140;
   static const double carouselVerticalDrop = 36;
-  static const double carouselSlopeTilt = 0.18;
+  static const double carouselSlopeTilt = 0.22;
 
   static const double cardBorderRadius = 56;
   static const double cardPadding = 40;
