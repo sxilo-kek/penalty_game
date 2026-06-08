@@ -25,6 +25,7 @@ abstract final class WheelLayout {
   static const double cardPadding = 40;
   static const double cardTitleFontSize = 68;
 
+  static const double resultDialogWidthFactor = 0.8;
+  static const double resultDialogHeightFactor = 0.6;
   static const double resultDialogPadding = 56;
-  static const double resultImageHeight = 720;
 }

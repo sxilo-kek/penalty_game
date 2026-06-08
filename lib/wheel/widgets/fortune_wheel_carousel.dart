@@ -62,16 +62,14 @@ class _FortuneWheelCarouselState extends State<FortuneWheelCarousel> {
         child: GestureDetector(
           onTap: () => Navigator.of(ctx).pop(),
           child: Material(
-            color: const Color(0xffF40000),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(60),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(WheelLayout.resultDialogPadding),
-              child: Image.asset(
-                '${AssetPaths.wheelImages}${prize.image}',
-                height: WheelLayout.resultImageHeight,
-                fit: BoxFit.contain,
+            color: Colors.white,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(60)),
+            child: SizedBox(
+              width: KioskScreenSize.width * WheelLayout.resultDialogWidthFactor,
+              height: KioskScreenSize.height * WheelLayout.resultDialogHeightFactor,
+              child: Padding(
+                padding: const EdgeInsets.all(WheelLayout.resultDialogPadding),
+                child: Image.asset('${AssetPaths.wheelImages}${prize.image}', fit: BoxFit.contain),
               ),
             ),
           ),
