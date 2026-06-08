@@ -27,4 +27,5 @@ abstract final class WheelLayout {
 
   static const double resultTitleFontSize = 96;
   static const double resultBodyFontSize = 52;
+  static const double resultImageHeight = 360;
 }

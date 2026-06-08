@@ -68,13 +68,32 @@ class _FortuneWheelCarouselState extends State<FortuneWheelCarousel> {
             fontSize: WheelLayout.resultTitleFontSize,
           ),
         ),
-        content: Text(
-          prize.title,
-          style: TextStyle(
-            color: Colors.white.withValues(alpha: 0.9),
-            fontSize: WheelLayout.resultBodyFontSize,
-            fontWeight: FontWeight.w300,
-          ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(32),
+              ),
+              child: Image.asset(
+                '${AssetPaths.wheelImages}${prize.image}',
+                height: WheelLayout.resultImageHeight,
+                fit: BoxFit.contain,
+              ),
+            ),
+            const SizedBox(height: 28),
+            Text(
+              prize.title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white.withValues(alpha: 0.9),
+                fontSize: WheelLayout.resultBodyFontSize,
+                fontWeight: FontWeight.w300,
+              ),
+            ),
+          ],
         ),
         actions: [
           TextButton(
