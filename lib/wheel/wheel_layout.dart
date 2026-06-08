@@ -25,7 +25,13 @@ abstract final class WheelLayout {
   static const double cardPadding = 40;
   static const double cardTitleFontSize = 68;
 
-  static const double resultTitleFontSize = 96;
-  static const double resultBodyFontSize = 52;
-  static const double resultImageHeight = 360;
+  static const double resultDialogWidth = 1840;
+  static const double resultDialogPadding = 56;
+  static const double resultTitleFontSize = 120;
+  static const double resultBodyFontSize = 72;
+  static const double resultImageHeight = 720;
+  static const double resultImagePadding = 48;
+  static const double resultButtonFontSize = 72;
+  static const double resultButtonPaddingH = 120;
+  static const double resultButtonPaddingV = 36;
 }

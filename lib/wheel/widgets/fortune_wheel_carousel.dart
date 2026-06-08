@@ -57,53 +57,80 @@ class _FortuneWheelCarouselState extends State<FortuneWheelCarousel> {
     showDialog<void>(
       context: context,
       barrierDismissible: true,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: const Color(0xffF40000),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(60)),
-        title: Text(
-          prize.id == 'thanks' ? 'Баярлалаа' : 'Баяр хүргэе!',
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w900,
-            fontSize: WheelLayout.resultTitleFontSize,
+      barrierColor: Colors.black.withValues(alpha: 0.55),
+      builder: (ctx) => Center(
+        child: Material(
+          color: const Color(0xffF40000),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(60),
+          ),
+          child: SizedBox(
+            width: WheelLayout.resultDialogWidth,
+            child: Padding(
+              padding: const EdgeInsets.all(WheelLayout.resultDialogPadding),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    prize.id == 'thanks' ? 'Баярлалаа' : 'Баяр хүргэе!',
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w900,
+                      fontSize: WheelLayout.resultTitleFontSize,
+                    ),
+                  ),
+                  const SizedBox(height: 48),
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(WheelLayout.resultImagePadding),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(48),
+                    ),
+                    child: Image.asset(
+                      '${AssetPaths.wheelImages}${prize.image}',
+                      height: WheelLayout.resultImageHeight,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                  Text(
+                    prize.title,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white.withValues(alpha: 0.9),
+                      fontSize: WheelLayout.resultBodyFontSize,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                  const SizedBox(height: 48),
+                  TextButton(
+                    onPressed: () => Navigator.of(ctx).pop(),
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: WheelLayout.resultButtonPaddingH,
+                        vertical: WheelLayout.resultButtonPaddingV,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                    ),
+                    child: const Text(
+                      'OK',
+                      style: TextStyle(
+                        color: Color(0xffF40000),
+                        fontSize: WheelLayout.resultButtonFontSize,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(24),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(32),
-              ),
-              child: Image.asset(
-                '${AssetPaths.wheelImages}${prize.image}',
-                height: WheelLayout.resultImageHeight,
-                fit: BoxFit.contain,
-              ),
-            ),
-            const SizedBox(height: 28),
-            Text(
-              prize.title,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white.withValues(alpha: 0.9),
-                fontSize: WheelLayout.resultBodyFontSize,
-                fontWeight: FontWeight.w300,
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(ctx).pop(),
-            child: const Text(
-              'OK',
-              style: TextStyle(color: Colors.white, fontSize: 48),
-            ),
-          ),
-        ],
       ),
     );
   }
