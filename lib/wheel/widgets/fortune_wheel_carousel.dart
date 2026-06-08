@@ -1,23 +1,17 @@
+import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
+import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
-
-import 'package:penalty_game/asset_paths.dart';
-import 'package:penalty_game/kiosk_screen_size.dart';
-import 'package:penalty_game/wheel/models/wheel_prize.dart';
-import 'package:penalty_game/wheel/wheel_layout.dart';
-import 'package:penalty_game/wheel/wheel_spin_engine.dart';
 import 'package:penalty_game/wheel/widgets/fortune_bar_3d.dart';
 import 'package:penalty_game/wheel/widgets/prize_card.dart';
+import 'package:penalty_game/wheel/models/wheel_prize.dart';
+import 'package:penalty_game/wheel/wheel_spin_engine.dart';
+import 'package:penalty_game/wheel/wheel_layout.dart';
+import 'package:penalty_game/kiosk_screen_size.dart';
+import 'package:penalty_game/asset_paths.dart';
 
 class FortuneWheelCarousel extends StatefulWidget {
-  const FortuneWheelCarousel({
-    super.key,
-    required this.engine,
-    required this.spinDurationMs,
-    required this.minRotations,
-  });
+  const FortuneWheelCarousel({super.key, required this.engine, required this.spinDurationMs, required this.minRotations});
 
   final WheelSpinEngine engine;
   final int spinDurationMs;

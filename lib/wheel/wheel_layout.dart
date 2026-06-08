@@ -7,10 +7,9 @@ abstract final class WheelLayout {
   static const double spinButtonWidth = 880;
   static const double spinButtonBottom = 320;
 
-  // 3D carousel — 3 cards visible with gap between them
   static const double cardWidth = 700;
   static const double cardHeight = 860;
-  /// Horizontal distance between card centers (must be > cardWidth for gaps).
+  
   static const double slotWidth = 840;
   static const double cardGap = slotWidth - cardWidth;
 
