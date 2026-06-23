@@ -6,42 +6,42 @@
       "id": "drink",
       "image": "gift_drink.png",
       "title": "Minute Maid Nectar 300 мл",
-      "probability": 0.2,
+      "probability": 0.2, /* 20% */
       "maxTotal": 360
     },
     {
       "id": "emart",
       "image": "gift_emart_coupon.png",
       "title": "Emart эрхийн бичиг",
-      "probability": 0.12,
+      "probability": 0.12, /* 12% */
       "maxTotal": 10
     },
     {
       "id": "urgoo",
       "image": "gift_urgoo_coupon.png",
       "title": "Urgoo эрхийн бичиг",
-      "probability": 0.1,
+      "probability": 0.1, /* 10% */
       "maxTotal": 20
     },
     {
       "id": "park",
       "image": "gift_park_coupon.png",
       "title": "Park эрхийн бичиг",
-      "probability": 0.08,
+      "probability": 0.08, /* 8% */
       "maxTotal": 10
     },
     {
       "id": "bull",
       "image": "gift_bull_coupon.png",
       "title": "Bull эрхийн бичиг",
-      "probability": 0.08,
+      "probability": 0.08, /* 8% */
       "maxTotal": 10
     },
     {
       "id": "thanks",
       "image": "gift_thanks.png",
       "title": "Баярлалаа",
-      "probability": 0.42,
+      "probability": 0.42, /* 42% */
       "maxTotal": 99999
     }
   ]

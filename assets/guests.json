@@ -1,0 +1,378 @@
+[
+    {
+      "table": 1,
+      "guests": [
+        {"name": "Gilles LeClerk", "company": "TCCC"},
+        {"name": "Hunter Jin", "company": "Swire"},
+        {"name": "Raymond U", "company": "Macao Coca-Cola"},
+        {"name": "Basil Kleu", "company": "Former TCCC colleague"},
+        {"name": "Ж.Оджаргал", "company": "MCS Holding"},
+        {"name": "Д.Батмөнх", "company": "Орчлон Cургууль"},
+        {"name": "Л.Гантөмөр", "company": "MCS Holding"},
+        {"name": "А.Батсуурь", "company": "Sky Resort"},
+        {"name": "Л.Мягмаржав", "company": "MCS Coca-Cola"},
+        {"name": "Т.Булган", "company": "MCS Coca-Cola"},
+        {"name": "Л.Мягмаржав", "company": "MCS Coca-Cola"}
+      ]
+    },
+    {
+      "table": 2,
+      "guests": [
+        {"name": "Marcelo Gil Palafox", "company": "TCCC"},
+        {"name": "Maggie Wu", "company": "TCCC"},
+        {"name": "Ш.Баярсайхан", "company": "Номин Тав Трэйд"},
+        {"name": "В.Энхбаатар", "company": "Алтан Жолоо Групп"},
+        {"name": "Ж.Од", "company": "MCS Holding"},
+        {"name": "С.Мөнхсүрэн", "company": "Charming Beauty"},
+        {"name": "Д.Энхцэцэг", "company": "MCS Holding"},
+        {"name": "Г.Батцэнгэл", "company": "Energy Resources"},
+        {"name": "Р.Ганболд", "company": "Unitel"},
+        {"name": "Г.Зол-Орших", "company": "TCCC"}
+      ]
+    },
+    {
+      "table": 3,
+      "guests": [
+        {"name": "Tracy Han", "company": "TCCC"},
+        {"name": "Chris Ho", "company": "Macao Coca-Cola"},
+        {"name": "Д.Жамьяншарав", "company": "Unitel"},
+        {"name": "Ч.Даваахүү", "company": "MCS International"},
+        {"name": "Б.Даваа-Очир", "company": "MCS Property"},
+        {"name": "Ж.Уранцэцэг", "company": "MCS Estates"},
+        {"name": "Э.Орчлон", "company": "Net Zero Energy"},
+        {"name": "Р.Нармандах", "company": "Energy Resources"},
+        {"name": "Д.Болормаа", "company": "Wellbee"},
+        {"name": "Ж.Ариунжаргал", "company": "TCCC"}
+      ]
+    },
+    {
+      "table": 4,
+      "guests": [
+        {"name": "Flora Jiang", "company": "TCCC"},
+        {"name": "Coco Lu", "company": "TCCC"},
+        {"name": "Ken Ngai", "company": "TCCC"},
+        {"name": "Д.Үүрцайх", "company": "Energy Resources"},
+        {"name": "Л.Пагмасүрэн", "company": "Unitel"},
+        {"name": "Б.Мишээл", "company": "MCS Holding"},
+        {"name": "Т.Энхбаяр", "company": "MCS Holding"},
+        {"name": "Ц.Оюунтуул", "company": "MCS Holding"},
+        {"name": "Б.Ариунсанаа", "company": "MCS Holding"},
+        {"name": "Ш.Батболд", "company": "TCCC"}
+      ]
+    },
+    {
+      "table": 5,
+      "guests": [
+        {"name": "Б.Лхагважав", "company": "МҮХАҮТ"},
+        {"name": "З.Батбаяр", "company": "Усны Газар"},
+        {"name": "Г.Ганболд", "company": "Голомт Банк"},
+        {"name": "Я.Наваан", "company": "Номин Тав Трэйд"},
+        {"name": "Г.Чинзориг", "company": "Премиум Нэксус"},
+        {"name": "С.Мөнхбат", "company": "Хулан-Уул"},
+        {"name": "Г.Мягмаржав", "company": "MCS Investment"},
+        {"name": "Г.Болд", "company": "MCS Holding"},
+        {"name": "Б.Солонго", "company": "Metagro"},
+        {"name": "Б.Мэндсайхан", "company": "MCS Coca-Cola"}
+      ]
+    },
+    {
+      "table": 6,   
+      "guests": [
+        {"name": "Б.Самади", "company": "Скай Хайпермаркет"},
+        {"name": "Г.Мишээл", "company": "Burger King"},
+        {"name": "Э.Оюундарь", "company": "Алтан Жолоо Групп"},
+        {"name": "С.Саруул", "company": "Миний Дэлгүүр"},
+        {"name": "П.Ариунаа", "company": "Нью Булл, Pepper Lunch"},
+        {"name": "Ц.Хандаа", "company": "Anungoo"},
+        {"name": "О.Ананд", "company": "MCS Technologies"},
+        {"name": "М.Эвсанаа", "company": "MCS Technologies"},
+        {"name": "Б.Өлзийсайхан", "company": "MCS Coca-Cola"},
+        {"name": "М.Саран-Эрдэнэ", "company": "MCS Coca-Cola"}
+      ]
+    },
+    {
+      "table": 7,
+      "guests": [
+        {"name": "Ө.Оюунчимэг", "company": "Скай Хайпермаркет"},
+        {"name": "Г.Эрдэнэбат", "company": "Өргөө Нью Турсафарис"},
+        {"name": "Ц.Насанжаргал", "company": "Таван Богд Фүүдс Пицца"},
+        {"name": "А.Чинбишрэлт", "company": "Велл Март Чейн"},
+        {"name": "Н.Мэндбаяр", "company": "ҮСАХ"},
+        {"name": "Л.Золбоо", "company": "Уран Ган Групп"},
+        {"name": "Б.Чингүн", "company": "Үлэмж Гросерс"},
+        {"name": "Ц.Пүрэвдорж", "company": "Toyota Top Motors"},
+        {"name": "Б.Мөнхдөл", "company": "MCS Coca-Cola"},
+        {"name": "У.Уранбилэг", "company": "MCS Coca-Cola"}
+      ]
+    },
+    {
+      "table": 8,
+      "guests": [
+        {"name": "Ц.Магнайбаатар", "company": "МҮХАҮТ"},
+        {"name": "Ц.Санжжав", "company": "Бльюмон Групп"},
+        {"name": "М.Есөнмөнх", "company": "Номадс Хоспиталити"},
+        {"name": "Г.Бат-Эрдэнэ", "company": "Премиум Нэксус"},
+        {"name": "Б.Билигүүн", "company": "Former MCS colleague"},
+        {"name": "Г.Цогнэмэх", "company": "Former MCSCC colleague"},
+        {"name": "С.Ганзориг", "company": "Former MCSCC colleague"},
+        {"name": "С.Од-Эрдэнэ", "company": "Протек Групп"},
+        {"name": "Я.Пүрэвсүрэн", "company": "MCS Property"},
+        {"name": "Э.Билгүүн", "company": "MCS Coca-Cola"}
+      ]
+    },
+    {
+      "table": 9,
+      "guests": [
+        {"name": "Л.Магсаржав", "company": "MCS Ventures"},
+        {"name": "А.Мэндсайхан", "company": "MCS Holding"},
+        {"name": "Д.Тамир", "company": "MCS Holding"},
+        {"name": "Б.Нурбол", "company": "MCS Technologies"},
+        {"name": "Г.Ач-Эрдэнэ", "company": "Q-Menu"},
+        {"name": "Ү.Оюунбаатар", "company": "Shoppy"},
+        {"name": "Д.Батмагнай", "company": "M-Book"},
+        {"name": "Д.Ариунбаатар", "company": "DDish"},
+        {"name": "Б.Мөнхболд", "company": "MCS Coca-Cola"},
+        {"name": "Б.Алтаншагай", "company": "MCS Coca-Cola"}
+      ]
+    },
+    {
+      "table": 10,
+      "guests": [
+        {"name": "Т.Болормаа", "company": "Intermed"},
+        {"name": "А.Саранбаатар", "company": "Intermed"},
+        {"name": "Б.Отгончимэг", "company": "Uniservice Solution"},
+        {"name": "Ц.Алтанцэцэг", "company": "Uniservice Solution"},
+        {"name": "С.Эсэнцэнгэл", "company": "MCS Holding"},
+        {"name": "П.Батжаргал", "company": "Ashid Capital"},
+        {"name": "Н.Нямдаваа", "company": "Erchim Suljee"},
+        {"name": "Ш.Нарантуяа", "company": "MCS Holding"},
+        {"name": "Ш.Мөнхбат", "company": "MCS Investment"},
+        {"name": "Б.Уянга", "company": "MCS Coca-Cola"}
+      ]
+    },
+    {
+      "table": 11,
+      "guests": [
+        {"name": "А.Одонбаатар", "company": "Голомт Банк"},
+        {"name": "Jahan Shamsiev", "company": "EBRD"},
+        {"name": "Г.Ганцэцэг", "company": "Худалдаа Хөгжлийн Банк"},
+        {"name": "Б.Дэлгэрсайхан", "company": "Cerberus Frontier"},
+        {"name": "Г.Энхтүвшин", "company": "MCS Holding"},
+        {"name": "С.Цэнгэл", "company": "MCS Investment"},
+        {"name": "Б.Үлэмж", "company": "Energy Resources"},
+        {"name": "Д.Бат-Очир", "company": "M Bank"},
+        {"name": "Д.Бадруун", "company": "M Bank"},
+        {"name": "Б.Тэмүүлэн", "company": "M Bank"}
+      ]
+    },
+    {
+      "table": 12,
+      "guests": [
+        {"name": "Б.Сугар-Эрдэнэ", "company": "Голомт Банк"},
+        {"name": "Д.Номин", "company": "Голомт Банк"},
+        {"name": "Д.Өсөхбаяр", "company": "Голомт Банк"},
+        {"name": "Б.Оргил", "company": "Худалдаа Хөгжлийн Банк"},
+        {"name": "Л.Хонгорзул", "company": "Худалдаа Хөгжлийн Банк"},
+        {"name": "М.Занданцэцэг", "company": "Худалдаа Хөгжлийн Банк"},
+        {"name": "М.Шүрээ", "company": "EBRD"},
+        {"name": "М.Жавхлан", "company": "EBRD"},
+        {"name": "Л.Мөнхзул", "company": "MCS Holding"},
+        {"name": "Б.Төмөрбаатар", "company": "MCS Coca-Cola"}
+      ]
+    },
+    {
+      "table": 13,
+      "guests": [
+        {"name": "Elain Huang", "company": "Coca-Cola China Limited"},
+        {"name": "Remy Ren", "company": "Coca-Cola Shanghai Beverages"},
+        {"name": "Joanna Yuan", "company": "Coca-Cola Shanghai Beverages"},
+        {"name": "Barry Wong", "company": "CBPC"},
+        {"name": "Randy Teo", "company": "Czarnikow Limited Company"},
+        {"name": "Nidhi Goel", "company": "CEPG"},
+        {"name": "Х.Тэгшээ", "company": "HMD"},
+        {"name": "Ц.Хүслэн", "company": "HMD"},
+        {"name": "Б.Цэрэнчунт", "company": "MCS Coca-Cola"},
+        {"name": "Н.Нармандах", "company": "MCS Coca-Cola"}
+      ]
+    },
+    {
+      "table": 14,
+      "guests": [
+        {"name": "Lina Wang", "company": "Clobotics"},
+        {"name": "Lu Wang", "company": "Clobotics"},
+        {"name": "Д.Сайнзаяа", "company": "Mind Plus"},
+        {"name": "О.Болормаа", "company": "Mind Plus"},
+        {"name": "О.Мөнхжаргал", "company": "Mind Plus"},
+        {"name": "В.Отгонрагчаа", "company": "Mind Plus"},
+        {"name": "Б.Дашням", "company": "E-Bazaar"},
+        {"name": "М.Мөнхдөл", "company": "Ontime"},
+        {"name": "Г.Тэнгэр", "company": "MCS Investment"},
+        {"name": "Б.Ариунбаяр", "company": "MCS Investment"}
+      ]
+    },
+    {
+      "table": 15,
+      "guests": [
+        {"name": "П.Оюунтөгс", "company": "Jetro Holding"},
+        {"name": "Г.Оюундулам", "company": "Дэлгэрэх ОЖС"},
+        {"name": "М.Мөнхжаргал", "company": "Үндсэн Орд"},
+        {"name": "Б.Лхагвасүрэн", "company": "Дүүхээ"},
+        {"name": "Ж.Анхбаяр", "company": "Наран Групп"},
+        {"name": "Ч.Нямаа", "company": "Улаанбаатар Синема"},
+        {"name": "Ш.Баяраа", "company": "Бигэр Сайхан Нутаг"},
+        {"name": "Г.Баяраа", "company": "MCS Coca-Cola"},
+        {"name": "Э.Оюун-Эрдэнэ", "company": "MCS Coca-Cola"},
+        {"name": "А.Наранцацрал", "company": "MCS Coca-Cola"}
+      ]
+    },
+    {
+      "table": 16,
+      "guests": [
+        {"name": "Г.Хоролмаа", "company": "БОУАӨЯ"},
+        {"name": "Г.Энхмөнх", "company": "БОУАӨЯ"},
+        {"name": "Ц.Болормаа", "company": "УСУГ"},
+        {"name": "Л.Хишигдулам", "company": "Усны Газар"},
+        {"name": "Б.Энхсүрэн", "company": "Усны Газар"},
+        {"name": "Э.Мөнхжаргал", "company": "АДС"},
+        {"name": "Т.Ангараг", "company": "АДС"},
+        {"name": "Э.Энхзул", "company": "АДС"},
+        {"name": "А.Нардина", "company": "MCS Coca-Cola"},
+        {"name": "О.Удвал", "company": "MCS Coca-Cola"}
+      ]
+    },
+    {
+      "table": 17,
+      "guests": [
+        {"name": "Б.Сувд-Эрдэнэ", "company": "MCS Holding"},
+        {"name": "Ц.Гэрэлт-Од", "company": "MCS Holding"},
+        {"name": "Ч.Дэжидмаа", "company": "MCS Holding"},
+        {"name": "Г.Анхбаяр", "company": "Central TV"},
+        {"name": "А.Дөлгөөн", "company": "Central TV"},
+        {"name": "Л.Энэрэл", "company": "Metagro"},
+        {"name": "Б.Мөнхзул", "company": "Metagro"},
+        {"name": "Э.Мандах-Эрдэнэ", "company": "Unitel"},
+        {"name": "Ч.Солонго", "company": "Unitel"},
+        {"name": "Б.Пүрэвсүрэн", "company": "MCS Coca-Cola"}
+      ]
+    },
+    {
+      "table": 18,
+      "guests": [
+        {"name": "М.Батжаргал", "company": "MCS Holding"},
+        {"name": "Т.Цэнгэлжаргал", "company": "MCS Holding"},
+        {"name": "Э.Асралт", "company": "MCS Holding"},
+        {"name": "Б.Батшагай", "company": "ХХААХҮЯ"},
+        {"name": "М.Нармандах", "company": "Хүнсчдийн холбоо"},
+        {"name": "Н.Одонтуяа", "company": "Shangri-La Ulaanbaatar"},
+        {"name": "П.Октябрь", "company": "Shangri-La Ulaanbaatar"},
+        {"name": "Б.Ууганцэцэг", "company": "Shangri-La Ulaanbaatar"},
+        {"name": "А.Зургаанжин", "company": "MCS Coca-Cola"},
+        {"name": "А.Хажидсүрэн", "company": "MCS Coca-Cola"}
+      ]
+    },
+    {
+      "table": 19,
+      "guests": [
+        {"name": "С.Алтантуяа", "company": "TML Group"},
+        {"name": "Л.Даваа", "company": "SESL"},
+        {"name": "Г.Пүрэвсүх", "company": "Agar Energy"},
+        {"name": "Т.Түвшинбаяр", "company": "Energy Resources"},
+        {"name": "Д.Алтантулга", "company": "International"},
+        {"name": "Ц.Хүдэрхуяг", "company": "International"},
+        {"name": "Ч.Баяржаргал", "company": "International"},
+        {"name": "Д.Одгэрэл", "company": "Sky Resort"},
+        {"name": "Н.Бат-Өлзий", "company": "MCS Coca-Cola"},
+        {"name": "Б.Цэрэнжамц", "company": "MCS Coca-Cola"}
+      ]
+    },
+    {
+      "table": 20,
+      "guests": [
+        {"name": "С.Алтанцэцэг", "company": "СХЗГ"},
+        {"name": "Д.Даваасүрэн", "company": "СХЗГ"},
+        {"name": "Л.Золзаяа", "company": "СХЗГ"},
+        {"name": "Ц.Батдорж", "company": "СХЗГ"},
+        {"name": "Б.Батхүү", "company": "MCM Групп"},
+        {"name": "Б.Батбаяр", "company": "ХХААХҮЯ"},
+        {"name": "Д.Эрдэнэбаяр", "company": "MCS Coca-Cola"},
+        {"name": "Я.Батжаргал", "company": "MCS Coca-Cola"},
+        {"name": "Д.Болормаа", "company": "MCS Coca-Cola"},
+        {"name": "М.Энхжаргал", "company": "MCS Coca-Cola"}
+      ]
+    },
+    {
+      "table": 21,
+      "guests": [
+        {"name": "З.Чантуу", "company": "СББ"},
+        {"name": "Я.Хишигжаргал", "company": "СББ"},
+        {"name": "С.Ганболд", "company": "СББ"},
+        {"name": "С.Ганбаатар", "company": "Номин Даатгал"},
+        {"name": "Б.Сарангэрэл", "company": "Shangri-La Ulaanbaatar"},
+        {"name": "Ч.Нямаа", "company": "Улаанбаатар Синема"},
+        {"name": "Г.Даваасүрэн", "company": "MCS Coca-Cola"},
+        {"name": "Б.Биндэръяа", "company": "MCS Coca-Cola"},
+        {"name": "Д.Батжаргал", "company": "MCS Coca-Cola"},
+        {"name": "Д.Хонгорзул", "company": "MCS Coca-Cola"}
+      ]
+    },
+    {
+      "table": 22,
+      "guests": [
+        {"name": "Б.Цолмон", "company": "MCS Holding"},
+        {"name": "С.Золзаяа", "company": "Орчлон Cургууль"},
+        {"name": "Э.Золбоо", "company": "Сэлбэ Cургууль"},
+        {"name": "М.Дэлгэрцэцэг", "company": "M-Castle"},
+        {"name": "Б.Ариунсанаа", "company": "MCS Holding"},
+        {"name": "О.Пүрэвсүрэн", "company": "MCS Coca-Cola"},
+        {"name": "Э.Итгэл", "company": "MCS Coca-Cola"},
+        {"name": "Б.Элдэв-Очир", "company": "MCS Coca-Cola"},
+        {"name": "Э.Соёл-Эрдэнэ", "company": "MCS Coca-Cola"},
+        {"name": "З.Одгэрэл", "company": "MCS Coca-Cola"}
+      ]
+    },
+    {
+      "table": 23,
+      "guests": [
+        {"name": "Ж.Уранбилэг", "company": "Former MCS colleague"},
+        {"name": "Д.Гантигмаа", "company": "Former MCS colleague"},
+        {"name": "Ц.Гэрэл", "company": "Former MCS colleague"},
+        {"name": "Л.Лхамдулам", "company": "Former MCS colleague"},
+        {"name": "Ц.Очгэрэл", "company": "Former MCS colleague"},
+        {"name": "Л.Лхамдулам", "company": "Former MCS colleague"},
+        {"name": "Б.Отгонбаяр", "company": "EBB"},
+        {"name": "Б.Цэлмэг", "company": "Former MCS colleague"},
+        {"name": "Ц.Болороо", "company": "MCS Coca-Cola"},
+        {"name": "А.Хулан", "company": "MCS Coca-Cola"}
+      ]
+    },
+    {
+      "table": 24,
+      "guests": [
+        {"name": "Ч.Бүжин", "company": "Anungoo"},
+        {"name": "Ц.Болормаа", "company": "Anungoo"},
+        {"name": "Д.Батцэцэг", "company": "Anungoo"},
+        {"name": "О.Мөнхжаргал", "company": "Mind Plus"},
+        {"name": "Б.Санчир", "company": "MCS Coca-Cola"},
+        {"name": "Ц.Галбадрах", "company": "M Bank"},
+        {"name": "Б.Сэргэлэн", "company": "Total Distribution"},
+        {"name": "З.Баатарсүрэн", "company": "MCS Coca-Cola"},
+        {"name": "Г.Ууганбаяр", "company": "Total Distribution"},
+        {"name": "Б.Энхбилэг", "company": "Metagro"}
+      ]
+    },
+    {
+      "table": 25,
+      "guests": [
+        {"name": "Н.Амартүвшин", "company": "Former MCSCC colleague"},
+        {"name": "Т.Цэнд-Аюуш", "company": "Former MCSCC colleague"},
+        {"name": "Э.Санчирдорж", "company": "Former MCSCC colleague"},
+        {"name": "Ш.Отгонцэцэг", "company": "Former MCSCC colleague"},
+        {"name": "Д.Батмөнх", "company": "Former MCSCC colleague"},
+        {"name": "Г.Энхболд", "company": "Former MCSCC colleague"},
+        {"name": "М.Дэндэв", "company": "Former MCSCC colleague"},
+        {"name": "Т.Дэнсмаа", "company": "Former MCSCC colleague"},
+        {"name": "Ж.Уранчимэг", "company": "Former MCSCC colleague"},
+        {"name": "Д.Наранмөнх", "company": "Former MCSCC colleague"}
+      ]
+    }
+  ]

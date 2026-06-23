@@ -19,4 +19,6 @@ flutter:
   assets:
     - assets/images/penalty_game/
     - assets/images/wheel_game/
+    - assets/images/guest_web/
     - assets/wheel_prizes.json
+    - assets/guests.json
