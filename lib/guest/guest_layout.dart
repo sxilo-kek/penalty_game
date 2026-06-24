@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'package:penalty_game/kiosk_screen_size.dart';
-
-/// Layout for `/guest` on 1080×1920 kiosk canvas.
+/// Layout for `/guest` only — 1080×1920 canvas (independent of [KioskScreenSize]).
 abstract final class GuestLayout {
   static const Color cocaRed = Color(0xFFE41E2B);
   static const Color stageRed = Color(0xFFC8102E);
 
-  static const double canvasWidth = KioskScreenSize.width;
-  static const double canvasHeight = KioskScreenSize.height;
+  static const double canvasWidth = 1080;
+  static const double canvasHeight = 1920;
 
   static const double formTop = canvasHeight * 0.34;
   static const double chartTop = canvasHeight * 0.44;
