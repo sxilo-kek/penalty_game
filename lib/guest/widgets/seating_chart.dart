@@ -17,8 +17,8 @@ class SeatingChart extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.15),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
+            blurRadius: 24,
+            offset: const Offset(0, 8),
           ),
         ],
       ),
@@ -155,15 +155,15 @@ class _TableCircle extends StatelessWidget {
             ? [
                 BoxShadow(
                   color: const Color(0xFFFFD54F).withValues(alpha: 0.6),
-                  blurRadius: 12,
-                  spreadRadius: 2,
+                  blurRadius: 24,
+                  spreadRadius: 4,
                 ),
               ]
             : [
                 BoxShadow(
                   color: Colors.black.withValues(alpha: 0.2),
-                  blurRadius: 4,
-                  offset: const Offset(0, 2),
+                  blurRadius: 8,
+                  offset: const Offset(0, 4),
                 ),
               ],
       ),
@@ -173,7 +173,7 @@ class _TableCircle extends StatelessWidget {
         style: TextStyle(
           color: Colors.white,
           fontSize: highlighted
-              ? GuestLayout.tableFontSize + 4
+              ? GuestLayout.tableFontSize + 8
               : GuestLayout.tableFontSize,
           fontWeight: FontWeight.w800,
         ),
