@@ -13,12 +13,12 @@ class SeatingChart extends StatelessWidget {
       width: GuestLayout.chartWidth,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(32),
+        borderRadius: BorderRadius.circular(GuestLayout.chartBorderRadius),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.15),
-            blurRadius: 24,
-            offset: const Offset(0, 8),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -26,17 +26,19 @@ class SeatingChart extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _StageBar(label: 'Main Stage'),
+          const _StageBar(label: 'Main Stage'),
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: GuestLayout.chartPadding,
-              vertical: 36,
+              vertical: GuestLayout.chartSectionPaddingV,
             ),
             child: Column(
               children: [
                 for (final row in GuestLayout.seatingGrid)
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: GuestLayout.chartRowGap,
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -97,7 +99,7 @@ class _EntryBar extends StatelessWidget {
       width: double.infinity,
       height: GuestLayout.entryBarHeight,
       color: GuestLayout.stageRed,
-      padding: const EdgeInsets.symmetric(horizontal: 40),
+      padding: const EdgeInsets.symmetric(horizontal: GuestLayout.entryPaddingH),
       child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -134,28 +136,34 @@ class _TableCircle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final grow = highlighted ? GuestLayout.tableHighlightGrow : 0.0;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 350),
       curve: Curves.easeOutBack,
-      width: highlighted ? GuestLayout.tableSize + 20 : GuestLayout.tableSize,
-      height: highlighted ? GuestLayout.tableSize + 20 : GuestLayout.tableSize,
+      width: GuestLayout.tableSize + grow,
+      height: GuestLayout.tableSize + grow,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: GuestLayout.cocaRed,
-        border: highlighted ? Border.all(color: const Color(0xFFFFD54F), width: 8) : null,
+        border: highlighted
+            ? Border.all(
+                color: const Color(0xFFFFD54F),
+                width: GuestLayout.tableHighlightBorder,
+              )
+            : null,
         boxShadow: highlighted
             ? [
                 BoxShadow(
                   color: const Color(0xFFFFD54F).withValues(alpha: 0.6),
-                  blurRadius: 24,
-                  spreadRadius: 4,
+                  blurRadius: 12,
+                  spreadRadius: 2,
                 ),
               ]
             : [
                 BoxShadow(
                   color: Colors.black.withValues(alpha: 0.2),
-                  blurRadius: 8,
-                  offset: const Offset(0, 4),
+                  blurRadius: 4,
+                  offset: const Offset(0, 2),
                 ),
               ],
       ),
@@ -164,7 +172,9 @@ class _TableCircle extends StatelessWidget {
         '$number',
         style: TextStyle(
           color: Colors.white,
-          fontSize: highlighted ? GuestLayout.tableFontSize + 8 : GuestLayout.tableFontSize,
+          fontSize: highlighted
+              ? GuestLayout.tableFontSize + 4
+              : GuestLayout.tableFontSize,
           fontWeight: FontWeight.w800,
         ),
       ),

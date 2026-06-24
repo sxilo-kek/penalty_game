@@ -5,7 +5,6 @@ import 'package:penalty_game/guest/guest_layout.dart';
 import 'package:penalty_game/guest/guest_repository.dart';
 import 'package:penalty_game/guest/widgets/guest_lookup_form.dart';
 import 'package:penalty_game/guest/widgets/seating_chart.dart';
-import 'package:penalty_game/kiosk_screen_size.dart';
 
 class GuestScreen extends StatefulWidget {
   const GuestScreen({super.key});
@@ -60,8 +59,8 @@ class _GuestScreenState extends State<GuestScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SizedBox(
-        width: KioskScreenSize.width,
-        height: KioskScreenSize.height,
+        width: GuestLayout.canvasWidth,
+        height: GuestLayout.canvasHeight,
         child: _buildBody(),
       ),
     );
@@ -72,7 +71,7 @@ class _GuestScreenState extends State<GuestScreen> {
       return Center(
         child: Text(
           'Failed to load guests: $_error',
-          style: const TextStyle(color: Colors.white, fontSize: 48),
+          style: const TextStyle(color: Colors.white, fontSize: GuestLayout.errorFontSize),
         ),
       );
     }
@@ -82,8 +81,8 @@ class _GuestScreenState extends State<GuestScreen> {
       children: [
         Image.asset(
           '${AssetPaths.guestImages}guest_background.png',
-          width: KioskScreenSize.width,
-          height: KioskScreenSize.height,
+          width: GuestLayout.canvasWidth,
+          height: GuestLayout.canvasHeight,
           fit: BoxFit.fill,
         ),
         Positioned(

@@ -31,7 +31,7 @@ class GuestLookupForm extends StatelessWidget {
             onSelected: onCompanySelected,
             onCleared: onCompanyCleared,
           ),
-          const SizedBox(height: 36),
+          const SizedBox(height: GuestLayout.formFieldGap),
           _NameField(
             key: ValueKey(selectedCompany),
             enabled: selectedCompany != null,
@@ -63,7 +63,7 @@ class _CompanyField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Autocomplete<String>(
       initialValue: TextEditingValue(text: initialCompany ?? ''),
-      optionsMaxHeight: 560,
+      optionsMaxHeight: GuestLayout.suggestionMaxHeight,
       displayStringForOption: (o) => o,
       optionsBuilder: (value) => repository.searchCompanies(value.text),
       onSelected: onSelected,
@@ -82,14 +82,16 @@ class _CompanyField extends StatelessWidget {
           alignment: Alignment.topCenter,
           child: Material(
             elevation: 8,
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(GuestLayout.suggestionBorderRadius),
             child: ConstrainedBox(
               constraints: const BoxConstraints(
                 maxWidth: GuestLayout.fieldWidth,
-                maxHeight: 560,
+                maxHeight: GuestLayout.suggestionMaxHeight,
               ),
               child: ListView.builder(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  vertical: GuestLayout.suggestionListPaddingV,
+                ),
                 shrinkWrap: true,
                 itemCount: options.length,
                 itemBuilder: (context, index) {
@@ -126,7 +128,7 @@ class _NameField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Autocomplete<String>(
-      optionsMaxHeight: 560,
+      optionsMaxHeight: GuestLayout.suggestionMaxHeight,
       displayStringForOption: (o) => o,
       optionsBuilder: (value) {
         if (!enabled) return const Iterable<String>.empty();
@@ -148,14 +150,16 @@ class _NameField extends StatelessWidget {
           alignment: Alignment.topCenter,
           child: Material(
             elevation: 8,
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(GuestLayout.suggestionBorderRadius),
             child: ConstrainedBox(
               constraints: const BoxConstraints(
                 maxWidth: GuestLayout.fieldWidth,
-                maxHeight: 560,
+                maxHeight: GuestLayout.suggestionMaxHeight,
               ),
               child: ListView.builder(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  vertical: GuestLayout.suggestionListPaddingV,
+                ),
                 shrinkWrap: true,
                 itemCount: options.length,
                 itemBuilder: (context, index) {
@@ -200,13 +204,13 @@ class _RedField extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.25),
-            blurRadius: 12,
-            offset: const Offset(0, 6),
+            blurRadius: 6,
+            offset: const Offset(0, 3),
           ),
         ],
       ),
       alignment: Alignment.center,
-      padding: const EdgeInsets.symmetric(horizontal: 48),
+      padding: const EdgeInsets.symmetric(horizontal: GuestLayout.fieldPaddingH),
       child: TextField(
         controller: controller,
         focusNode: focusNode,
@@ -250,19 +254,19 @@ class _WhiteField extends StatelessWidget {
       height: GuestLayout.nameFieldHeight,
       decoration: BoxDecoration(
         color: enabled ? Colors.white : Colors.white.withValues(alpha: 0.5),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(GuestLayout.whiteFieldRadius),
         boxShadow: enabled
             ? [
                 BoxShadow(
                   color: Colors.black.withValues(alpha: 0.12),
-                  blurRadius: 8,
-                  offset: const Offset(0, 4),
+                  blurRadius: 4,
+                  offset: const Offset(0, 2),
                 ),
               ]
             : null,
       ),
       alignment: Alignment.center,
-      padding: const EdgeInsets.symmetric(horizontal: 48),
+      padding: const EdgeInsets.symmetric(horizontal: GuestLayout.fieldPaddingH),
       child: TextField(
         controller: controller,
         focusNode: focusNode,

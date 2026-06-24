@@ -2,29 +2,48 @@ import 'package:flutter/material.dart';
 
 import 'package:penalty_game/kiosk_screen_size.dart';
 
-/// Layout tuned for [KioskScreenSize] — same 2160×3840 canvas as penalty & wheel.
+/// Layout for `/guest` on 1080×1920 kiosk canvas.
 abstract final class GuestLayout {
   static const Color cocaRed = Color(0xFFE41E2B);
   static const Color stageRed = Color(0xFFC8102E);
 
-  static const double formTop = KioskScreenSize.height * 0.34;
-  static const double chartTop = KioskScreenSize.height * 0.44;
+  static const double canvasWidth = KioskScreenSize.width;
+  static const double canvasHeight = KioskScreenSize.height;
 
-  static const double fieldWidth = KioskScreenSize.width * 0.83;
-  static const double companyFieldHeight = 140;
-  static const double nameFieldHeight = 140;
-  static const double fieldFontSize = 64;
-  static const double fieldRadius = 70;
+  static const double formTop = canvasHeight * 0.34;
+  static const double chartTop = canvasHeight * 0.44;
 
-  static const double chartWidth = KioskScreenSize.width * 0.85;
-  static const double chartPadding = 48;
-  static const double tableSize = 150;
-  static const double tableFontSize = 64;
-  static const double stageBarHeight = 100;
-  static const double stageFontSize = 52;
-  static const double entryBarHeight = 80;
-  static const double entryFontSize = 42;
-  static const double suggestionFontSize = 48;
+  static const double fieldWidth = canvasWidth * 0.83;
+  static const double companyFieldHeight = 70;
+  static const double nameFieldHeight = 70;
+  static const double fieldFontSize = 32;
+  static const double fieldRadius = 35;
+  static const double fieldPaddingH = 24;
+  static const double formFieldGap = 18;
+  static const double whiteFieldRadius = 8;
+
+  static const double chartWidth = canvasWidth * 0.85;
+  static const double chartBorderRadius = 16;
+  static const double chartPadding = 24;
+  static const double chartSectionPaddingV = 18;
+  static const double chartRowGap = 6;
+
+  static const double tableSize = 75;
+  static const double tableHighlightGrow = 10;
+  static const double tableFontSize = 32;
+  static const double tableHighlightBorder = 4;
+  static const double stageBarHeight = 50;
+  static const double stageFontSize = 26;
+  static const double entryBarHeight = 40;
+  static const double entryFontSize = 21;
+  static const double entryPaddingH = 20;
+
+  static const double suggestionFontSize = 24;
+  static const double suggestionMaxHeight = 280;
+  static const double suggestionBorderRadius = 12;
+  static const double suggestionListPaddingV = 6;
+
+  static const double errorFontSize = 24;
 
   /// Seating grid — `null` = empty cell (matches event floor plan).
   static const List<List<int?>> seatingGrid = [
