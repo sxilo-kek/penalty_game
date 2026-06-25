@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:penalty_game/kiosk_screen_size.dart';
+import 'package:penalty_game/widgets/kiosk_canvas.dart';
 import 'package:penalty_game/wheel/models/wheel_prize.dart';
 import 'package:penalty_game/wheel/wheel_config_loader.dart';
 import 'package:penalty_game/wheel/wheel_spin_engine.dart';
@@ -42,11 +42,7 @@ class _WheelGameScreenState extends State<WheelGameScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SizedBox(
-        width: KioskScreenSize.width,
-        height: KioskScreenSize.height,
-        child: _buildBody(),
-      ),
+      body: KioskCanvas(child: _buildBody()),
     );
   }
 

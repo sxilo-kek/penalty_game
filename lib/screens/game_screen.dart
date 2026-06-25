@@ -24,13 +24,16 @@ class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GameWidget<PenaltyGame>(
-        game: _game,
-        overlayBuilderMap: {
-          'hud': (_, g) => HudOverlay(game: g),
-          'gameOver': (_, g) => GameOverOverlay(game: g),
-        },
-        initialActiveOverlays: const ['hud'],
+      backgroundColor: Colors.black,
+      body: SizedBox.expand(
+        child: GameWidget<PenaltyGame>(
+          game: _game,
+          overlayBuilderMap: {
+            'hud': (_, g) => HudOverlay(game: g),
+            'gameOver': (_, g) => GameOverOverlay(game: g),
+          },
+          initialActiveOverlays: const ['hud'],
+        ),
       ),
     );
   }

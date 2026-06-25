@@ -4,6 +4,7 @@ import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'dart:math';
 
+import 'package:penalty_game/kiosk_screen_size.dart';
 import 'package:penalty_game/game/aim_indicator.dart';
 import 'package:penalty_game/game/goalkeeper.dart';
 import 'package:penalty_game/game/goal_area.dart';
@@ -14,6 +15,14 @@ import 'package:penalty_game/game/ball.dart';
 import 'package:penalty_game/asset_paths.dart';
 
 class PenaltyGame extends FlameGame with HasCollisionDetection, PanDetector {
+  PenaltyGame()
+      : super(
+          camera: CameraComponent.withFixedResolution(
+            width: KioskScreenSize.width,
+            height: KioskScreenSize.height,
+          ),
+        );
+
   Ball? ball;
   late Goalkeeper keeper;
   late GoalArea goal;
@@ -37,19 +46,25 @@ class PenaltyGame extends FlameGame with HasCollisionDetection, PanDetector {
 
   void addScore(int points) => _score.add(points);
 
+  Vector2 _worldPosition(Vector2 global) {
+    final widgetLocal = convertGlobalToLocalCoordinate(global);
+    return camera.globalToLocal(widgetLocal);
+  }
+
   @override
   Future<void> onLoad() async {
     images.prefix = AssetPaths.penaltyImages;
     await super.onLoad();
+    camera.viewfinder.anchor = Anchor.topLeft;
     await _drawPitch();
     goal = GoalArea(Vector2(size.x / 2, 420));
-    add(goal);
+    world.add(goal);
     keeper = Goalkeeper(Vector2(size.x / 2, 520));
-    add(keeper);
+    world.add(keeper);
     aimIndicator = AimIndicator();
-    add(aimIndicator);
+    world.add(aimIndicator);
     _flash = Flash();
-    add(_flash);
+    world.add(_flash);
     resetBall();
   }
 
@@ -62,7 +77,9 @@ class PenaltyGame extends FlameGame with HasCollisionDetection, PanDetector {
 
   Future<void> _drawPitch() async {
     final fieldSprite = await loadSprite('field.png');
-    add(SpriteComponent(sprite: fieldSprite, size: size, position: Vector2.zero()));
+    world.add(
+      SpriteComponent(sprite: fieldSprite, size: size, position: Vector2.zero()),
+    );
   }
 
   void _updateBlockers() {
@@ -79,14 +96,14 @@ class PenaltyGame extends FlameGame with HasCollisionDetection, PanDetector {
       _blockers.add(Blocker(
         position: Vector2(size.x / 2 + (i.isEven ? -250 : 250), yPos),
         speed: spd,
-      )..addToParent(this));
+      )..addToParent(world));
     }
   }
 
   void resetBall() {
     if (ball != null && ball!.isMounted) ball!.removeFromParent();
     ball = Ball(Vector2(size.x / 2, size.y - 600));
-    add(ball!);
+    world.add(ball!);
     _updateBlockers();
     keeper.updateDifficulty(difficultyLevel);
     Future.microtask(() => aimIndicator.hide());
@@ -98,14 +115,14 @@ class PenaltyGame extends FlameGame with HasCollisionDetection, PanDetector {
   @override
   void onPanStart(DragStartInfo info) {
     if (ball!.isShot || isGameOver) return;
-    _dragStart = info.eventPosition.global.clone();
+    _dragStart = _worldPosition(info.eventPosition.global);
     _dragCurrent = _dragStart!.clone();
   }
 
   @override
   void onPanUpdate(DragUpdateInfo info) {
     if (ball!.isShot || isGameOver || _dragStart == null) return;
-    _dragCurrent = info.eventPosition.global.clone();
+    _dragCurrent = _worldPosition(info.eventPosition.global);
     final drag = _dragStart! - _dragCurrent!;
     final power = (drag.length / 500.0).clamp(0.0, 1.0);
     aimIndicator.update2(ballPos: ball!.position, direction: drag, power: power);

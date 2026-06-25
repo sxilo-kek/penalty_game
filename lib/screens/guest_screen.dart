@@ -5,6 +5,7 @@ import 'package:penalty_game/guest/guest_layout.dart';
 import 'package:penalty_game/guest/guest_repository.dart';
 import 'package:penalty_game/guest/widgets/guest_lookup_form.dart';
 import 'package:penalty_game/guest/widgets/seating_chart.dart';
+import 'package:penalty_game/widgets/kiosk_canvas.dart';
 
 class GuestScreen extends StatefulWidget {
   const GuestScreen({super.key});
@@ -58,11 +59,7 @@ class _GuestScreenState extends State<GuestScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SizedBox(
-        width: GuestLayout.canvasWidth,
-        height: GuestLayout.canvasHeight,
-        child: _buildBody(),
-      ),
+      body: KioskCanvas(child: _buildBody()),
     );
   }
 
