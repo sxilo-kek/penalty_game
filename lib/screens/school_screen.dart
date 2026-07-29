@@ -47,64 +47,60 @@ class _SchoolScreenState extends State<SchoolScreen> {
 
   Widget _buildHeader() {
     return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            SchoolLayout.headerGradientStart,
-            SchoolLayout.headerGradientEnd,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+      padding: EdgeInsets.only(
+        top: MediaQuery.of(context).padding.top + 12,
+        bottom: 16,
+        left: SchoolLayout.pagePadding,
+        right: SchoolLayout.pagePadding,
       ),
-      child: SafeArea(
-        bottom: false,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: SchoolLayout.pagePadding,
-            vertical: 20,
+      decoration: const BoxDecoration(
+        color: SchoolLayout.surface,
+        boxShadow: [
+          BoxShadow(
+            color: SchoolLayout.cardShadow,
+            blurRadius: 12,
+            offset: Offset(0, 2),
           ),
-          child: Row(
-            children: [
-              Container(
-                width: 48,
-                height: 48,
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.25),
-                  borderRadius: BorderRadius.circular(14),
-                ),
-                child: const Icon(
-                  Icons.school_rounded,
-                  color: Colors.white,
-                  size: 26,
-                ),
-              ),
-              const SizedBox(width: 16),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Сургуулиуд',
-                    style: TextStyle(
-                      fontSize: SchoolLayout.headerTitleSize,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.white,
-                      height: 1.1,
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    'Хэлний сургалтын байгуулллагуудыг харах',
-                    style: TextStyle(
-                      fontSize: SchoolLayout.headerSubtitleSize,
-                      color: Colors.white.withValues(alpha: 0.85),
-                    ),
-                  ),
-                ],
-              ),
-            ],
+        ],
+      ),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Image.asset(
+              SchoolLayout.logoPath,
+              width: 48,
+              height: 48,
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
+          const SizedBox(width: 14),
+          const Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'NONA INSTITUTE',
+                  style: TextStyle(
+                    fontSize: SchoolLayout.headerTitleSize,
+                    fontWeight: FontWeight.w800,
+                    color: SchoolLayout.primary,
+                    letterSpacing: 0.5,
+                    height: 1.1,
+                  ),
+                ),
+                SizedBox(height: 2),
+                Text(
+                  'Хэлний сургалтын байгууллагууд',
+                  style: TextStyle(
+                    fontSize: SchoolLayout.headerSubtitleSize,
+                    color: SchoolLayout.textMuted,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -115,7 +111,7 @@ class _SchoolScreenState extends State<SchoolScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.error_outline, size: 48, color: SchoolLayout.accent),
+            const Icon(Icons.error_outline, size: 48, color: SchoolLayout.primary),
             const SizedBox(height: 12),
             Text(
               'Мэдээлэл ачаалахад алдаа гарлаа\n$_error',
@@ -129,59 +125,62 @@ class _SchoolScreenState extends State<SchoolScreen> {
 
     if (_schools == null) {
       return const Center(
-        child: CircularProgressIndicator(color: SchoolLayout.accent),
+        child: CircularProgressIndicator(color: SchoolLayout.primary),
       );
     }
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final twoCol = constraints.maxWidth >= SchoolLayout.twoColumnBreakpoint;
+        final width = constraints.maxWidth;
+        final cols = width >= SchoolLayout.threeColumnBreakpoint
+            ? 3
+            : width >= SchoolLayout.twoColumnBreakpoint
+                ? 2
+                : 1;
         return SingleChildScrollView(
           padding: const EdgeInsets.all(SchoolLayout.pagePadding),
-          child: twoCol
-              ? _buildTwoColumnGrid(_schools!)
-              : _buildSingleColumn(_schools!),
+          child: _buildGrid(_schools!, cols),
         );
       },
     );
   }
 
-  Widget _buildSingleColumn(List<School> schools) {
-    return Column(
-      children: [
-        for (final school in schools) ...[
-          SchoolCard(school: school),
-          const SizedBox(height: SchoolLayout.gridGap),
+  Widget _buildGrid(List<School> schools, int cols) {
+    if (cols == 1) {
+      return Column(
+        children: [
+          for (final school in schools) ...[
+            SchoolCard(school: school),
+            const SizedBox(height: SchoolLayout.gridGap),
+          ],
         ],
-        const SizedBox(height: 8),
-      ],
-    );
-  }
+      );
+    }
 
-  Widget _buildTwoColumnGrid(List<School> schools) {
     final rows = <Widget>[];
-    for (var i = 0; i < schools.length; i += 2) {
-      final left = schools[i];
-      final right = i + 1 < schools.length ? schools[i + 1] : null;
+    for (var i = 0; i < schools.length; i += cols) {
+      final children = <Widget>[];
+      for (var j = 0; j < cols; j++) {
+        if (j > 0) children.add(const SizedBox(width: SchoolLayout.gridGap));
+        final idx = i + j;
+        children.add(
+          Expanded(
+            child: idx < schools.length
+                ? SchoolCard(school: schools[idx])
+                : const SizedBox.shrink(),
+          ),
+        );
+      }
       rows.add(
         IntrinsicHeight(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(child: SchoolCard(school: left)),
-              const SizedBox(width: SchoolLayout.gridGap),
-              Expanded(
-                child: right != null
-                    ? SchoolCard(school: right)
-                    : const SizedBox.shrink(),
-              ),
-            ],
+            children: children,
           ),
         ),
       );
       rows.add(const SizedBox(height: SchoolLayout.gridGap));
     }
-    rows.add(const SizedBox(height: 8));
     return Column(children: rows);
   }
 }

@@ -21,6 +21,7 @@ flutter:
     - assets/images/wheel_game/
     - assets/images/guest_web/
     - assets/images/bingo_game/
+    - assets/images/school/
     - assets/wheel_prizes.json
     - assets/guests.json
     - assets/schools.json
