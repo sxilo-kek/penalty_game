@@ -9,11 +9,15 @@ class BingoGrid extends StatelessWidget {
     super.key,
     required this.prizes,
     required this.revealed,
+    required this.jiggling,
+    required this.jiggleValue,
     required this.onCapTap,
   });
 
-  final List<BingoPrize?> prizes;
+  final List<BingoPrize> prizes;
   final List<bool> revealed;
+  final bool jiggling;
+  final double jiggleValue;
   final ValueChanged<int> onCapTap;
 
   @override
@@ -29,6 +33,8 @@ class BingoGrid extends StatelessWidget {
             child: BingoCapTile(
               prize: prizes[i],
               revealed: revealed[i],
+              jiggling: jiggling,
+              jigglePhase: (jiggleValue + i * 0.11) % 1.0,
               onTap: () => onCapTap(i),
             ),
           ),

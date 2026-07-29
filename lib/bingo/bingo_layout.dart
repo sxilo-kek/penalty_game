@@ -26,6 +26,8 @@ abstract final class BingoLayout {
   static const double pickOneTop = 1106;
 
   static const Duration flipDuration = Duration(milliseconds: 420);
+  static const Duration jiggleDuration = Duration(milliseconds: 900);
+  static const Duration confettiDuration = Duration(milliseconds: 2800);
 
   static Offset capTopLeft(int index) {
     final col = index % columns;
@@ -34,5 +36,11 @@ abstract final class BingoLayout {
       colCenters[col] - capWidth / 2,
       rowCenters[row] - capHeight / 2,
     );
+  }
+
+  static Offset capCenter(int index) {
+    final col = index % columns;
+    final row = index ~/ columns;
+    return Offset(colCenters[col], rowCenters[row]);
   }
 }

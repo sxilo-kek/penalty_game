@@ -7,44 +7,37 @@ import 'package:penalty_game/bingo/bingo_layout.dart';
 import 'package:penalty_game/bingo/bingo_prize.dart';
 
 class BingoCapTile extends StatefulWidget {
-  const BingoCapTile({
-    super.key,
-    required this.prize,
-    required this.revealed,
-    required this.onTap,
-  });
+  const BingoCapTile({super.key, required this.prize, required this.revealed, required this.jiggling, required this.jigglePhase, required this.onTap});
 
-  final BingoPrize? prize;
+  final BingoPrize prize;
   final bool revealed;
-  final VoidCallback? onTap;
+  final bool jiggling;
+  final double jigglePhase;
+  final VoidCallback onTap;
 
   @override
   State<BingoCapTile> createState() => _BingoCapTileState();
 }
 
-class _BingoCapTileState extends State<BingoCapTile>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
-  late final Animation<double> _animation;
+class _BingoCapTileState extends State<BingoCapTile> with SingleTickerProviderStateMixin {
+  late final AnimationController _flipController;
+  late final Animation<double> _flipAnimation;
   bool _showPrize = false;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: BingoLayout.flipDuration,
-    );
-    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
-    _controller.addListener(_onFlipTick);
+    _flipController = AnimationController(vsync: this, duration: BingoLayout.flipDuration);
+    _flipAnimation = CurvedAnimation(parent: _flipController, curve: Curves.easeInOut);
+    _flipController.addListener(_onFlipTick);
     _showPrize = widget.revealed;
     if (widget.revealed) {
-      _controller.value = 1;
+      _flipController.value = 1;
     }
   }
 
   void _onFlipTick() {
-    final showPrize = _animation.value >= 0.5;
+    final showPrize = _flipAnimation.value >= 0.5;
     if (showPrize != _showPrize) {
       setState(() => _showPrize = showPrize);
     }
@@ -54,40 +47,49 @@ class _BingoCapTileState extends State<BingoCapTile>
   void didUpdateWidget(covariant BingoCapTile oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.revealed && !oldWidget.revealed) {
-      _controller.forward(from: 0);
+      _flipController.forward();
+    } else if (!widget.revealed && oldWidget.revealed) {
+      _flipController.reverse();
     }
   }
 
   @override
   void dispose() {
-    _controller.removeListener(_onFlipTick);
-    _controller.dispose();
+    _flipController.removeListener(_onFlipTick);
+    _flipController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final angle = widget.jiggling ? math.sin(widget.jigglePhase * math.pi * 2) * 0.1 : 0.0;
+    final offsetX = widget.jiggling ? math.sin(widget.jigglePhase * math.pi * 4) * 6 : 0.0;
+
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onTap: widget.revealed ? null : widget.onTap,
+      onTap: widget.onTap,
       child: AnimatedBuilder(
-        animation: _animation,
+        animation: _flipAnimation,
         builder: (context, child) {
-          final angle = _animation.value * math.pi;
-          // Keep front face readable after the midpoint swap.
-          final displayAngle = _animation.value >= 0.5 ? angle - math.pi : angle;
-          return Transform(
-            alignment: Alignment.center,
-            transform: Matrix4.identity()
-              ..setEntry(3, 2, 0.0012)
-              ..rotateY(displayAngle),
-            child: child,
+          final t = _flipAnimation.value;
+          final flipAngle = t * math.pi;
+          final displayAngle = t >= 0.5 ? flipAngle - math.pi : flipAngle;
+          return Transform.translate(
+            offset: Offset(offsetX, 0),
+            child: Transform.rotate(
+              angle: angle,
+              child: Transform(
+                alignment: Alignment.center,
+                transform: Matrix4.identity()
+                  ..setEntry(3, 2, 0.0012)
+                  ..rotateY(displayAngle),
+                child: child,
+              ),
+            ),
           );
         },
         child: Image.asset(
-          _showPrize && widget.prize != null
-              ? widget.prize!.assetPath
-              : '${AssetPaths.bingoImages}closed.png',
+          _showPrize ? widget.prize.assetPath : '${AssetPaths.bingoImages}closed.png',
           width: BingoLayout.capWidth,
           height: BingoLayout.capHeight,
           fit: BoxFit.contain,
