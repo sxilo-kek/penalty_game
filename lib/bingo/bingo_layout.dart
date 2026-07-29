@@ -19,7 +19,7 @@ abstract final class BingoLayout {
 
   static const List<double> rowCenters = [1530, 2152.5, 2771.25];
 
-  static const bool debugRevealAll = true;
+  static const bool showPrizeLabels = true;
 
   static const Duration flipDuration = Duration(milliseconds: 420);
   static const Duration jiggleDuration = Duration(milliseconds: 900);

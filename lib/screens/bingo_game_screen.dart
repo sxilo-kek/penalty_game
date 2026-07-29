@@ -36,9 +36,7 @@ class _BingoGameScreenState extends State<BingoGameScreen>
       vsync: this,
       duration: BingoLayout.jiggleDuration,
     );
-    if (!BingoLayout.debugRevealAll) {
-      _jiggleController.repeat();
-    }
+    _jiggleController.repeat();
     _shuffleBoard();
   }
 
@@ -56,10 +54,7 @@ class _BingoGameScreenState extends State<BingoGameScreen>
     ]..shuffle(_random);
 
     _prizes = prizes;
-    _revealed = List<bool>.filled(
-      BingoLayout.capCount,
-      BingoLayout.debugRevealAll,
-    );
+    _revealed = List<bool>.filled(BingoLayout.capCount, false);
     _hasPicked = false;
     _isResetting = false;
     _pickedIndex = null;
@@ -67,11 +62,6 @@ class _BingoGameScreenState extends State<BingoGameScreen>
 
   Future<void> _onCapTap(int index) async {
     if (_isResetting) return;
-
-    if (BingoLayout.debugRevealAll) {
-      setState(_shuffleBoard);
-      return;
-    }
 
     if (_hasPicked) {
       await _resetRound();
@@ -114,8 +104,7 @@ class _BingoGameScreenState extends State<BingoGameScreen>
   }
 
   Widget _buildBody() {
-    final showConfetti = !BingoLayout.debugRevealAll &&
-        _hasPicked &&
+    final showConfetti = _hasPicked &&
         _pickedIndex != null &&
         _prizes[_pickedIndex!].isWinning;
 
@@ -133,11 +122,9 @@ class _BingoGameScreenState extends State<BingoGameScreen>
             return BingoGrid(
               prizes: _prizes,
               revealed: _revealed,
-              jiggling: !BingoLayout.debugRevealAll &&
-                  !_hasPicked &&
-                  !_isResetting,
+              jiggling: !_hasPicked && !_isResetting,
               jiggleValue: _jiggleController.value,
-              showDebugLabels: BingoLayout.debugRevealAll,
+              showPrizeLabels: BingoLayout.showPrizeLabels,
               onCapTap: _onCapTap,
             );
           },
