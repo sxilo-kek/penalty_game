@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:penalty_game/screens/bingo_game_screen.dart';
 import 'package:penalty_game/screens/game_screen.dart';
 import 'package:penalty_game/screens/guest_screen.dart';
 import 'package:penalty_game/screens/wheel_game_screen.dart';
@@ -18,6 +19,10 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/wheel',
       builder: (_, __) => const WheelGameScreen(),
+    ),
+    GoRoute(
+      path: '/bingo',
+      builder: (_, __) => const BingoGameScreen(),
     ),
     GoRoute(
       path: '/guest',
