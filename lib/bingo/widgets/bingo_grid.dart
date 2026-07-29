@@ -11,6 +11,7 @@ class BingoGrid extends StatelessWidget {
     required this.revealed,
     required this.jiggling,
     required this.jiggleValue,
+    required this.showDebugLabels,
     required this.onCapTap,
   });
 
@@ -18,6 +19,7 @@ class BingoGrid extends StatelessWidget {
   final List<bool> revealed;
   final bool jiggling;
   final double jiggleValue;
+  final bool showDebugLabels;
   final ValueChanged<int> onCapTap;
 
   @override
@@ -30,12 +32,33 @@ class BingoGrid extends StatelessWidget {
             top: BingoLayout.capTopLeft(i).dy,
             width: BingoLayout.capWidth,
             height: BingoLayout.capHeight,
-            child: BingoCapTile(
-              prize: prizes[i],
-              revealed: revealed[i],
-              jiggling: jiggling,
-              jigglePhase: (jiggleValue + i * 0.11) % 1.0,
-              onTap: () => onCapTap(i),
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                BingoCapTile(
+                  prize: prizes[i],
+                  revealed: revealed[i],
+                  jiggling: jiggling,
+                  jigglePhase: (jiggleValue + i * 0.11) % 1.0,
+                  onTap: () => onCapTap(i),
+                ),
+                if (showDebugLabels)
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: -72,
+                    child: Text(
+                      '${i + 1}: ${prizes[i].debugLabel}',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.black87,
+                        fontSize: 36,
+                        fontWeight: FontWeight.w600,
+                        height: 1.1,
+                      ),
+                    ),
+                  ),
+              ],
             ),
           ),
       ],

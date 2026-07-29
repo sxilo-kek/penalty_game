@@ -15,15 +15,11 @@ abstract final class BingoLayout {
   static const double capWidth = 420;
   static const double capHeight = 432;
 
-  /// Column center X positions.
   static const List<double> colCenters = [480, 1080, 1672.5];
 
-  /// Row center Y positions.
   static const List<double> rowCenters = [1530, 2152.5, 2771.25];
 
-  static const double pickOneFontSize = 52;
-  static const Color pickOneColor = Color(0xFFB8B8B8);
-  static const double pickOneTop = 1106;
+  static const bool debugRevealAll = true;
 
   static const Duration flipDuration = Duration(milliseconds: 420);
   static const Duration jiggleDuration = Duration(milliseconds: 900);

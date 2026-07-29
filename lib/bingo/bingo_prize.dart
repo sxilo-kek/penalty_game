@@ -12,4 +12,10 @@ enum BingoPrize {
       };
 
   bool get isWinning => this == BingoPrize.drink || this == BingoPrize.gift;
+
+  String get debugLabel => switch (this) {
+        BingoPrize.drink => 'Ундаа',
+        BingoPrize.gift => 'Бэлэг',
+        BingoPrize.thankyou => 'Баярлалаа',
+      };
 }

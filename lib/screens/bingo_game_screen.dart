@@ -1,12 +1,13 @@
-import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
+import 'package:penalty_game/asset_paths.dart';
+import 'package:penalty_game/bingo/bingo_layout.dart';
+import 'package:penalty_game/bingo/bingo_prize.dart';
 import 'package:penalty_game/bingo/widgets/bingo_confetti.dart';
 import 'package:penalty_game/bingo/widgets/bingo_grid.dart';
 import 'package:penalty_game/widgets/kiosk_canvas.dart';
-import 'package:penalty_game/bingo/bingo_layout.dart';
-import 'package:penalty_game/bingo/bingo_prize.dart';
-import 'package:penalty_game/asset_paths.dart';
 
 class BingoGameScreen extends StatefulWidget {
   const BingoGameScreen({super.key});
@@ -15,7 +16,8 @@ class BingoGameScreen extends StatefulWidget {
   State<BingoGameScreen> createState() => _BingoGameScreenState();
 }
 
-class _BingoGameScreenState extends State<BingoGameScreen> with SingleTickerProviderStateMixin {
+class _BingoGameScreenState extends State<BingoGameScreen>
+    with SingleTickerProviderStateMixin {
   final Random _random = Random();
 
   late List<BingoPrize> _prizes;
@@ -30,7 +32,13 @@ class _BingoGameScreenState extends State<BingoGameScreen> with SingleTickerProv
   @override
   void initState() {
     super.initState();
-    _jiggleController = AnimationController(vsync: this, duration: BingoLayout.jiggleDuration)..repeat();
+    _jiggleController = AnimationController(
+      vsync: this,
+      duration: BingoLayout.jiggleDuration,
+    );
+    if (!BingoLayout.debugRevealAll) {
+      _jiggleController.repeat();
+    }
     _shuffleBoard();
   }
 
@@ -41,10 +49,17 @@ class _BingoGameScreenState extends State<BingoGameScreen> with SingleTickerProv
   }
 
   void _shuffleBoard() {
-    final prizes = <BingoPrize>[BingoPrize.drink, BingoPrize.gift, ...List.filled(7, BingoPrize.thankyou)]..shuffle(_random);
+    final prizes = <BingoPrize>[
+      ...List.filled(4, BingoPrize.drink),
+      ...List.filled(2, BingoPrize.gift),
+      ...List.filled(3, BingoPrize.thankyou),
+    ]..shuffle(_random);
 
     _prizes = prizes;
-    _revealed = List<bool>.filled(BingoLayout.capCount, false);
+    _revealed = List<bool>.filled(
+      BingoLayout.capCount,
+      BingoLayout.debugRevealAll,
+    );
     _hasPicked = false;
     _isResetting = false;
     _pickedIndex = null;
@@ -52,6 +67,11 @@ class _BingoGameScreenState extends State<BingoGameScreen> with SingleTickerProv
 
   Future<void> _onCapTap(int index) async {
     if (_isResetting) return;
+
+    if (BingoLayout.debugRevealAll) {
+      setState(_shuffleBoard);
+      return;
+    }
 
     if (_hasPicked) {
       await _resetRound();
@@ -87,29 +107,46 @@ class _BingoGameScreenState extends State<BingoGameScreen> with SingleTickerProv
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.black, body: KioskCanvas(child: _buildBody()));
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: KioskCanvas(child: _buildBody()),
+    );
   }
 
   Widget _buildBody() {
-    final showConfetti = _hasPicked && _pickedIndex != null && _prizes[_pickedIndex!].isWinning;
+    final showConfetti = !BingoLayout.debugRevealAll &&
+        _hasPicked &&
+        _pickedIndex != null &&
+        _prizes[_pickedIndex!].isWinning;
 
     return Stack(
       fit: StackFit.expand,
       children: [
-        Image.asset('${AssetPaths.bingoImages}background.png', fit: BoxFit.fill, filterQuality: FilterQuality.high),
-        const Positioned(
-          top: BingoLayout.pickOneTop,
-          left: 0,
-          right: 0,
-          child: Text('pick one', textAlign: TextAlign.center, style: TextStyle(fontFamily: 'Courier', fontSize: BingoLayout.pickOneFontSize, color: BingoLayout.pickOneColor, fontWeight: FontWeight.w400, letterSpacing: 1.5, height: 1)),
+        Image.asset(
+          '${AssetPaths.bingoImages}background.png',
+          fit: BoxFit.fill,
+          filterQuality: FilterQuality.high,
         ),
         AnimatedBuilder(
           animation: _jiggleController,
           builder: (context, _) {
-            return BingoGrid(prizes: _prizes, revealed: _revealed, jiggling: !_hasPicked && !_isResetting, jiggleValue: _jiggleController.value, onCapTap: _onCapTap);
+            return BingoGrid(
+              prizes: _prizes,
+              revealed: _revealed,
+              jiggling: !BingoLayout.debugRevealAll &&
+                  !_hasPicked &&
+                  !_isResetting,
+              jiggleValue: _jiggleController.value,
+              showDebugLabels: BingoLayout.debugRevealAll,
+              onCapTap: _onCapTap,
+            );
           },
         ),
-        if (showConfetti) BingoConfetti(key: ValueKey(_confettiKey), origin: BingoLayout.capCenter(_pickedIndex!)),
+        if (showConfetti)
+          BingoConfetti(
+            key: ValueKey(_confettiKey),
+            origin: BingoLayout.capCenter(_pickedIndex!),
+          ),
       ],
     );
   }
