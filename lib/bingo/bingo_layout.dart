@@ -11,7 +11,6 @@ abstract final class BingoLayout {
   static const int rows = 3;
   static const int capCount = columns * rows;
 
-  /// White card bounds from `bingo_game/background.png`.
   static const double cardLeft = 180;
   static const double cardTop = 896;
   static const double cardRight = 1998;

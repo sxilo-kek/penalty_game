@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:penalty_game/screens/bingo_game_screen.dart';
 import 'package:penalty_game/screens/game_screen.dart';
 import 'package:penalty_game/screens/guest_screen.dart';
+import 'package:penalty_game/screens/school_screen.dart';
 import 'package:penalty_game/screens/wheel_game_screen.dart';
 
 final GoRouter appRouter = GoRouter(
@@ -23,6 +24,10 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/bingo',
       builder: (_, __) => const BingoGameScreen(),
+    ),
+    GoRoute(
+      path: '/school',
+      builder: (_, __) => const SchoolScreen(),
     ),
     GoRoute(
       path: '/guest',

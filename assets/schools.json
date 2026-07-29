@@ -1,0 +1,164 @@
+[
+  {
+    "id": "wasai",
+    "name": "Wasai Laowai",
+    "image": null,
+    "description": "Хятад хэлийг хамгийн хурдан арга замаар эзэмших боломжийг олгодог шинэлэг арга зүйтэй хэлний сургууль. Эхний хичээлийг үнэ төлбөргүй авах боломжтой.",
+    "address": "Улаанбаатар, Сүхбаатар дүүрэг, 1-р хороо",
+    "phone": "+976 9911 2233",
+    "discount": "Эхний хичээл үнэгүй",
+    "courses": [
+      {
+        "name": "Эхлэгчдэд зориулсан хятад хэл",
+        "duration": "4 цаг",
+        "price": 600000,
+        "discountPrice": 49000
+      },
+      {
+        "name": "Дунд түвшин",
+        "duration": "8 цаг",
+        "price": 900000,
+        "discountPrice": 120000
+      },
+      {
+        "name": "Ахисан түвшин",
+        "duration": "12 цаг",
+        "price": 1200000,
+        "discountPrice": null
+      }
+    ]
+  },
+  {
+    "id": "monlearn",
+    "name": "MonLearn Academy",
+    "image": null,
+    "description": "Монгол дахь хамгийн том онлайн болон танхимын хэлний академи. Англи, Солонгос, Япон хэлний бүх түвшний сургалттай.",
+    "address": "Улаанбаатар, Баянзүрх дүүрэг, 16-р хороо",
+    "phone": "+976 9922 4455",
+    "discount": "2 дахь сар 30% хямдрал",
+    "courses": [
+      {
+        "name": "Англи хэл — Эхлэгч",
+        "duration": "3 сар",
+        "price": 450000,
+        "discountPrice": 315000
+      },
+      {
+        "name": "Солонгос хэл — TOPIK бэлтгэл",
+        "duration": "6 сар",
+        "price": 780000,
+        "discountPrice": null
+      },
+      {
+        "name": "Япон хэл — JLPT N5",
+        "duration": "4 сар",
+        "price": 520000,
+        "discountPrice": 390000
+      }
+    ]
+  },
+  {
+    "id": "elite",
+    "name": "Elite Language School",
+    "image": null,
+    "description": "Гадаадад суралцах, ажиллахад бэлтгэдэг мэргэшсэн хэлний сургууль. IELTS, TOPIK, JLPT бэлтгэл хичээлүүд.",
+    "address": "Улаанбаатар, Хан-Уул дүүрэг, 3-р хороо",
+    "phone": "+976 9933 6677",
+    "discount": null,
+    "courses": [
+      {
+        "name": "IELTS бэлтгэл",
+        "duration": "3 сар",
+        "price": 650000,
+        "discountPrice": null
+      },
+      {
+        "name": "TOPIK II бэлтгэл",
+        "duration": "2 сар",
+        "price": 480000,
+        "discountPrice": null
+      }
+    ]
+  },
+  {
+    "id": "lingua",
+    "name": "Lingua Hub",
+    "image": null,
+    "description": "Онлайн форматаар ажилладаг орчин үеийн хэлний сургууль. Бүх насны суралцагчдад тохирсон уян хатан хуваарьтай.",
+    "address": "Улаанбаатар, Чингэлтэй дүүрэг, 2-р хороо",
+    "phone": "+976 9944 8899",
+    "discount": "Бүлгээр бүртгүүлэхэд 20% хямдрал",
+    "courses": [
+      {
+        "name": "Франц хэл — Эхлэгч",
+        "duration": "5 сар",
+        "price": 550000,
+        "discountPrice": 440000
+      },
+      {
+        "name": "Герман хэл",
+        "duration": "6 сар",
+        "price": 620000,
+        "discountPrice": 496000
+      },
+      {
+        "name": "Испани хэл",
+        "duration": "4 сар",
+        "price": 500000,
+        "discountPrice": 400000
+      }
+    ]
+  },
+  {
+    "id": "bright",
+    "name": "Bright Future School",
+    "image": null,
+    "description": "Хүүхэд, залуусад зориулсан хэлний сургууль. Тоглоом, аниме, кино ашиглан хэл сурдаг өвөрмөц арга зүй.",
+    "address": "Улаанбаатар, Сонгинохайрхан дүүрэг, 19-р хороо",
+    "phone": "+976 9955 0011",
+    "discount": "Ах дүүсийн хөнгөлөлт 15%",
+    "courses": [
+      {
+        "name": "Хүүхдийн англи хэл (7-12 нас)",
+        "duration": "6 сар",
+        "price": 420000,
+        "discountPrice": 357000
+      },
+      {
+        "name": "Солонгос хэл (аниме арга зүй)",
+        "duration": "4 сар",
+        "price": 460000,
+        "discountPrice": null
+      }
+    ]
+  },
+  {
+    "id": "global",
+    "name": "Global Mind Academy",
+    "image": null,
+    "description": "Бизнес хэл болон мэргэжлийн хэлний курс санал болгодог академи. Гадаадын багш нартай хамтран ажилладаг.",
+    "address": "Улаанбаатар, Баянгол дүүрэг, 5-р хороо",
+    "phone": "+976 9966 2244",
+    "discount": null,
+    "courses": [
+      {
+        "name": "Бизнес Англи",
+        "duration": "3 сар",
+        "price": 700000,
+        "discountPrice": null
+      },
+      {
+        "name": "Хэлэлцээрийн Хятад хэл",
+        "duration": "4 сар",
+        "price": 750000,
+        "discountPrice": null
+      },
+      {
+        "name": "Олон улсын харилцааны Франц хэл",
+        "duration": "5 сар",
+        "price": 800000,
+        "discountPrice": null
+      }
+    ]
+  }
+]
