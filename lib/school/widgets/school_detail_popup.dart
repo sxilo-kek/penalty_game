@@ -192,9 +192,7 @@ class SchoolDetailPopup extends StatelessWidget {
                 style: TextStyle(
                   fontSize: SchoolLayout.priceSize,
                   fontWeight: FontWeight.w800,
-                  color: hasDiscount
-                      ? SchoolLayout.discountPrice
-                      : SchoolLayout.textDark,
+                  color: hasDiscount ? SchoolLayout.discountPrice : SchoolLayout.textDark,
                 ),
               ),
             ],

@@ -15,13 +15,7 @@ import 'package:penalty_game/game/ball.dart';
 import 'package:penalty_game/asset_paths.dart';
 
 class PenaltyGame extends FlameGame with HasCollisionDetection, PanDetector {
-  PenaltyGame()
-      : super(
-          camera: CameraComponent.withFixedResolution(
-            width: KioskScreenSize.width,
-            height: KioskScreenSize.height,
-          ),
-        );
+  PenaltyGame() : super(camera: CameraComponent.withFixedResolution(width: KioskScreenSize.width, height: KioskScreenSize.height));
 
   Ball? ball;
   late Goalkeeper keeper;

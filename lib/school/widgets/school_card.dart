@@ -20,13 +20,7 @@ class SchoolCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: SchoolLayout.surface,
             borderRadius: BorderRadius.circular(SchoolLayout.cardRadius),
-            boxShadow: const [
-              BoxShadow(
-                color: SchoolLayout.cardShadow,
-                blurRadius: 24,
-                offset: Offset(0, 8),
-              ),
-            ],
+            boxShadow: const [BoxShadow(color: SchoolLayout.cardShadow, blurRadius: 24, offset: Offset(0, 8))],
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(SchoolLayout.cardRadius),
@@ -40,33 +34,13 @@ class SchoolCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        school.name,
-                        style: const TextStyle(
-                          fontSize: SchoolLayout.schoolNameSize,
-                          fontWeight: FontWeight.w700,
-                          color: SchoolLayout.textDark,
-                          height: 1.2,
-                        ),
-                      ),
+                      Text(school.name, style: const TextStyle(fontSize: SchoolLayout.schoolNameSize, fontWeight: FontWeight.w700, color: SchoolLayout.textDark, height: 1.2)),
                       const SizedBox(height: 6),
-                      Text(
-                        school.description,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontSize: SchoolLayout.schoolDescSize,
-                          color: SchoolLayout.textMuted,
-                          height: 1.5,
-                        ),
-                      ),
+                      Text(school.description, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: SchoolLayout.schoolDescSize, color: SchoolLayout.textMuted, height: 1.5)),
                       const SizedBox(height: 12),
                       Row(
                         children: [
-                          _buildChip(
-                            Icons.menu_book_rounded,
-                            '${school.courses.length} курс',
-                          ),
+                          _buildChip(Icons.menu_book_rounded, '${school.courses.length} курс'),
                           if (school.discount != null) ...[
                             const SizedBox(width: 8),
                             _buildBadge(),
@@ -88,38 +62,20 @@ class SchoolCard extends StatelessWidget {
     return Container(
       height: SchoolLayout.cardImageHeight,
       color: SchoolLayout.primaryLight,
-      child: school.image != null
-          ? Image.asset(school.image!, fit: BoxFit.cover, width: double.infinity)
-          : Center(
-              child: Icon(
-                Icons.school_rounded,
-                size: 48,
-                color: SchoolLayout.primary.withValues(alpha: 0.3),
-              ),
-            ),
+      child: school.image != null ? Image.asset(school.image!, fit: BoxFit.cover, width: double.infinity) : Center(child: Icon(Icons.school_rounded, size: 48, color: SchoolLayout.primary.withValues(alpha: 0.3))),
     );
   }
 
   Widget _buildChip(IconData icon, String label) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      decoration: BoxDecoration(
-        color: SchoolLayout.primaryLight,
-        borderRadius: BorderRadius.circular(20),
-      ),
+      decoration: BoxDecoration(color: SchoolLayout.primaryLight, borderRadius: BorderRadius.circular(20)),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(icon, size: 14, color: SchoolLayout.primary),
           const SizedBox(width: 4),
-          Text(
-            label,
-            style: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: SchoolLayout.primary,
-            ),
-          ),
+          Text(label, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: SchoolLayout.primary)),
         ],
       ),
     );
@@ -128,18 +84,8 @@ class SchoolCard extends StatelessWidget {
   Widget _buildBadge() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      decoration: BoxDecoration(
-        color: SchoolLayout.badge,
-        borderRadius: BorderRadius.circular(SchoolLayout.badgeRadius),
-      ),
-      child: Text(
-        school.discount!,
-        style: const TextStyle(
-          fontSize: SchoolLayout.badgeFontSize,
-          fontWeight: FontWeight.w600,
-          color: SchoolLayout.badgeText,
-        ),
-      ),
+      decoration: BoxDecoration(color: SchoolLayout.badge, borderRadius: BorderRadius.circular(SchoolLayout.badgeRadius)),
+      child: Text(school.discount!, style: const TextStyle(fontSize: SchoolLayout.badgeFontSize, fontWeight: FontWeight.w600, color: SchoolLayout.badgeText)),
     );
   }
 

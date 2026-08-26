@@ -100,9 +100,7 @@ class _GuestScreenState extends State<GuestScreen> {
           top: GuestLayout.chartTop,
           left: 0,
           right: 0,
-          child: Center(
-            child: SeatingChart(highlightedTable: _highlightedTable),
-          ),
+          child: Center(child: SeatingChart(highlightedTable: _highlightedTable)),
         ),
       ],
     );

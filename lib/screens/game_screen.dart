@@ -28,10 +28,7 @@ class _GameScreenState extends State<GameScreen> {
       body: SizedBox.expand(
         child: GameWidget<PenaltyGame>(
           game: _game,
-          overlayBuilderMap: {
-            'hud': (_, g) => HudOverlay(game: g),
-            'gameOver': (_, g) => GameOverOverlay(game: g),
-          },
+          overlayBuilderMap: {'hud': (_, g) => HudOverlay(game: g), 'gameOver': (_, g) => GameOverOverlay(game: g)},
           initialActiveOverlays: const ['hud'],
         ),
       ),

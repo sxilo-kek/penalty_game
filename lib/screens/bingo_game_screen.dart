@@ -1,13 +1,12 @@
+import 'package:flutter/material.dart';
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
-import 'package:penalty_game/asset_paths.dart';
-import 'package:penalty_game/bingo/bingo_layout.dart';
-import 'package:penalty_game/bingo/bingo_prize.dart';
 import 'package:penalty_game/bingo/widgets/bingo_confetti.dart';
 import 'package:penalty_game/bingo/widgets/bingo_grid.dart';
 import 'package:penalty_game/widgets/kiosk_canvas.dart';
+import 'package:penalty_game/bingo/bingo_layout.dart';
+import 'package:penalty_game/bingo/bingo_prize.dart';
+import 'package:penalty_game/asset_paths.dart';
 
 class BingoGameScreen extends StatefulWidget {
   const BingoGameScreen({super.key});
@@ -16,8 +15,7 @@ class BingoGameScreen extends StatefulWidget {
   State<BingoGameScreen> createState() => _BingoGameScreenState();
 }
 
-class _BingoGameScreenState extends State<BingoGameScreen>
-    with SingleTickerProviderStateMixin {
+class _BingoGameScreenState extends State<BingoGameScreen> with SingleTickerProviderStateMixin {
   final Random _random = Random();
 
   late List<BingoPrize> _prizes;
@@ -48,8 +46,7 @@ class _BingoGameScreenState extends State<BingoGameScreen>
 
   void _shuffleBoard() {
     final prizes = <BingoPrize>[
-      ...List.filled(4, BingoPrize.drink),
-      ...List.filled(2, BingoPrize.gift),
+      ...List.filled(6, BingoPrize.drink),
       ...List.filled(3, BingoPrize.thankyou),
     ]..shuffle(_random);
 
@@ -104,9 +101,7 @@ class _BingoGameScreenState extends State<BingoGameScreen>
   }
 
   Widget _buildBody() {
-    final showConfetti = _hasPicked &&
-        _pickedIndex != null &&
-        _prizes[_pickedIndex!].isWinning;
+    final showConfetti = _hasPicked && _pickedIndex != null && _prizes[_pickedIndex!].isWinning;
 
     return Stack(
       fit: StackFit.expand,

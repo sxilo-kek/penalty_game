@@ -165,20 +165,11 @@ class _SchoolScreenState extends State<SchoolScreen> {
         final idx = i + j;
         children.add(
           Expanded(
-            child: idx < schools.length
-                ? SchoolCard(school: schools[idx])
-                : const SizedBox.shrink(),
+            child: idx < schools.length ? SchoolCard(school: schools[idx]) : const SizedBox.shrink(),
           ),
         );
       }
-      rows.add(
-        IntrinsicHeight(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: children,
-          ),
-        ),
-      );
+      rows.add(IntrinsicHeight(child: Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: children)));
       rows.add(const SizedBox(height: SchoolLayout.gridGap));
     }
     return Column(children: rows);
