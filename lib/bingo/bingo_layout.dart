@@ -12,9 +12,9 @@ abstract final class BingoLayout {
   static const int capCount = columns * rows;
 
   static const double cardLeft = 180;
-  static const double cardTop = 896;
+  static const double cardTop = 1104;
   static const double cardRight = 1998;
-  static const double cardBottom = 2930;
+  static const double cardBottom = 3140;
   static const double gridPadding = 80;
 
   static const double capWidth = 460;
