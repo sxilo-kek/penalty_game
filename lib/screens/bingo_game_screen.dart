@@ -46,8 +46,8 @@ class _BingoGameScreenState extends State<BingoGameScreen> with SingleTickerProv
 
   void _shuffleBoard() {
     final prizes = <BingoPrize>[
-      ...List.filled(6, BingoPrize.drink),
-      ...List.filled(3, BingoPrize.thankyou),
+      ...List.filled(3, BingoPrize.drink),
+      ...List.filled(6, BingoPrize.thankyou),
     ]..shuffle(_random);
 
     _prizes = prizes;
